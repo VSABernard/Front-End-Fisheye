@@ -1,30 +1,38 @@
     async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
+        // const photographers = [
+        //     {
+        //         "name": "Ma data test",
+        //         "id": 1,
+        //         "city": "Paris",
+        //         "country": "France",
+        //         "tagline": "Ceci est ma data test",
+        //         "price": 400,
+        //         "portrait": "account.png"
+        //     },
+        //     {
+        //         "name": "Autre data test",
+        //         "id": 2,
+        //         "city": "Londres",
+        //         "country": "UK",
+        //         "tagline": "Ceci est ma data test 2",
+        //         "price": 500,
+        //         "portrait": "account.png"
+        //     },
+        // ]
 
+        // Récupérer les datas du JSON avec fetch
+        const photographers = await fetch('../../data/photographers.json')
+            .then(res => res.json())
+            .then(res => res.photographers)
+            .catch(err => console.log('an error occurs', err))
+
+            console.log ('photographers :' + photographers)
+            console.table (photographers)
 
         // et bien retourner le tableau photographers seulement une fois
         return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+            photographers: [...photographers]})
     }
 
     async function displayData(photographers) {
