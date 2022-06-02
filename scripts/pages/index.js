@@ -31,8 +31,7 @@
             console.table (photographers)
 
         // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers]})
+        return ({photographers: [...photographers]})
     }
 
     async function displayData(photographers) {
@@ -42,13 +41,13 @@
         const photographersSection = document.querySelector(".photographer_section");
         console.log ('photographersSection :' + photographersSection)
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            console.log ('photographerModel :' + photographerModel)
-
-            const userCardDOM = photographerModel.getUserCardDOM();
-            console.log ('userCardDOM :' + userCardDOM)
-            photographersSection.appendChild(userCardDOM);
+        photographers
+            .forEach((photographer) => {
+                const photographerModel = photographerFactory(photographer);
+                console.log ('photographerModel :' + photographerModel)
+                const userCardDOM = photographerModel.getUserCardDOM(); 
+                console.log ('userCardDOM :' + userCardDOM)
+                photographersSection.appendChild(userCardDOM);
         });
     };
 
