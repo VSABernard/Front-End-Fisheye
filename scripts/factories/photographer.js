@@ -1,7 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price } = data;
-   
-    // const picture = `assets/photographers/${portrait}`;
+    const { name, id, portrait, city, country, tagline, price } = data
 
     function getUserCardDOM() {
         const $wrapper = document.createElement('article')
@@ -9,8 +7,8 @@ function photographerFactory(data) {
 
         const userCard = `
             <article class="photographer" aria-label="List of photographers"> 
-                <a class='photographer-link' href='./photographer.html'>
-                    <img class='photographer-id' alt="ID photo of the photographer"  src='assets/photographers/${portrait}'>
+                <a class='photographer-link' href='./photographer.html?id=${id}'>
+                    <img class='photographer-id' alt="ID photo of the photographer" src='assets/photographers/${portrait}'>
                     <h2>${name}</h2>
                 </a>
                 <div class='photographer-details'>
@@ -22,8 +20,9 @@ function photographerFactory(data) {
         
         $wrapper.innerHTML = userCard
 
-        return $wrapper;
-        }
-        return { getUserCardDOM, name, portrait }
+        return $wrapper
     }
+    return { getUserCardDOM, name, portrait }
+}
    
+export { photographerFactory }
