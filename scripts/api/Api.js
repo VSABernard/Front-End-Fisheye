@@ -14,7 +14,8 @@ class Api {
             .catch(err => console.log('an error occurs', err))
         console.log ('photographers :' + photographers)
         console.table (photographers)
-        return ({photographers: [...photographers]})
+        // return ({photographers: [...photographers]})
+        return photographers
     }
 
 
