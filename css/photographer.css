@@ -68,6 +68,38 @@ picture img {
     border-radius: 130px;
 }
 
+.medias-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content;
+    width: auto;
+    margin: 0 90px;
+}
+
+.medias_photographer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 330px;
+    width: 100%;
+} 
+
+.media_photo {
+    display: flex;
+    width: 360px;
+    height: 260px;
+    object-fit: cover;
+}
+
+.media_photo img {
+    object-fit: cover;
+    object-position: center bottom;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;

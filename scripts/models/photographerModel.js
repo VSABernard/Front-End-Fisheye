@@ -17,6 +17,15 @@ class PhotographerModel {
         return this._name
     }
 
+    // Separer le prénom et le nom ET remplacer "tirer" dans le prénom par un espace vide
+    get firstName() {
+        const firstName = this._name.substring(0, this._name.indexOf(' '))
+        console.log('firstName : ' + firstName)
+        const newFirstName = firstName.replace('-', ' ')
+        console.log('newFirstName : ' + newFirstName)
+        return `${newFirstName}`
+    }
+
     get id() {
         return this._id
     }

@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />    
   </head>
 
   <body>
@@ -17,8 +18,8 @@
     </header>
 
     <main id="main" role="main" aria-hidden="false">
-      <div class="photograph-header">        
-      </div>
+      <div class="photograph-header"></div>
+      <div class="medias-content"></div>
     </main>
 
     <div id="contact_modal">
@@ -39,6 +40,10 @@
 
     <!-- Factories -->
     <script src="scripts/factories/photographer.js" type="module"></script>
+
+    <!-- Models -->
+    <script src="scripts/models/photographerModel.js" type="module"></script>
+    <script src="scripts/models/mediaModel.js" type="module"></script>
 
     <!-- Pages -->
     <script src="scripts/pages/photographer.js" type="module"></script>
