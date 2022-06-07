@@ -25,14 +25,17 @@ class Api {
      * @returns detail d'un photographe
      */
     async getPhotographer(id) {
-        const photographers = await fetch(this._url)
+        let photographers = await fetch(this._url)
             .then(res => res.json())
             .then(res => res.photographers)
-            .catch(err => console.log('an error occurs', err))
+            .catch(err => console.log('an error occurs', err))        
+
         console.log ('photographers :' + photographers)
         console.table (photographers)
 
-        const photographer = photographers.filter(photographer => photographer.id === id)
+        let photographer = photographers.filter(photographer => photographer.id === id)
+        console.log('photographer id ' + id + ' : ')
+        console.log(photographer)
         return photographer
     }
     

@@ -25,12 +25,13 @@ class AppPhotographer {
         console.log ('photographersModel :')
         console.table (photographersModel)
 
-        photographersModel.forEach(photographersModel => {
-            const template = new UserCard(photographersModel)
-            this.$photographersWrapper.appendChild(
-                template.createUserCard()
-            )
-        })
+        photographersModel
+            .forEach(photographersModel => {
+                const template = new UserCard(photographersModel)
+                this.$photographersWrapper.appendChild(
+                    template.createUserCard()
+                )
+            })
     /*
         photographers
             .forEach((photographer) => {
