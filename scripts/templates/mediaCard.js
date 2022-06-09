@@ -27,7 +27,7 @@ class VideoCard {
         $wrapper.classList.add('medias-list')
 
         const videoCard = `         
-         <section class="medias_photographer"> 
+        <section class="medias_photographer"> 
             <video controls class="media_video">
                 <source src='${this._media.video}' type="video/mp4">
             </video>            
@@ -37,6 +37,7 @@ class VideoCard {
         return $wrapper
     }
 }
+
 
 export { ImageCard }
 export { VideoCard }

@@ -2,6 +2,7 @@ import { PhotographerFactory } from '../factories/photographerFactory.js'
 import { MediaFactory } from '../factories/mediaFactory.js'
 import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
+import { PriceCard } from '../templates/contactCard.js'
 import { ImageCard } from '../templates/mediaCard.js'
 import { VideoCard } from '../templates/mediaCard.js'
 
@@ -32,6 +33,10 @@ class AppMedia {
         const mediasData = await this.api.getMediasByPhotographer(idPhotographer)
         console.log ('mediasData : '+ mediasData )
         this.displayMedias(mediasData)
+
+        // Affichage le nombre de likes et le prix journalier du photographe   
+        this.displayPrice(photographerData)
+        
     }
     
     async displayPhotographer(photographerData) {
@@ -72,6 +77,18 @@ class AppMedia {
                     template.createMediaPage()
                 )
             })        
+    }  
+    
+    async displayPrice(photographerData) {
+        const photographersModel = photographerData.map(photographer => new PhotographerFactory (photographer, 'User'))
+
+        photographersModel
+            .forEach(photographerModel => {
+                const template = new PriceCard(photographerModel)
+                this.$photographersWrapper.appendChild(
+                    template.createPriceCard()
+                )
+            })
     }   
 }
 

@@ -23,6 +23,7 @@ class UserCard {
         $wrapper.innerHTML = contactCard
         return $wrapper
     }
+
 }
 
-export {UserCard}
+export { UserCard }

@@ -25,4 +25,23 @@ class ContactCard {
     }
 }
 
+    
+class PriceCard {
+    constructor(user) {
+        this._user = user
+    }
+    createPriceCard() {
+        const $wrapper = document.createElement('div')
+        $wrapper.classList.add('banner-price')
+
+        const priceCard = `
+        <p class="price" aria-label="Daily rate of the photographer">
+            ${this._user.price}</p>
+        </p>`
+        $wrapper.innerHTML = priceCard
+        return $wrapper
+    }
+}
+
 export { ContactCard }
+export { PriceCard }

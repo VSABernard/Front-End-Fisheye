@@ -4,7 +4,8 @@ class MediaModel {
         this._image = data.image
         this._video = data.video  
         this._likes = data.likes  
-        this._date = data.data 
+        this._date = data.date 
+        this._price = data.price
         this._photographer = photographer
         
         // console.log('this photographer :')
@@ -33,6 +34,14 @@ class MediaModel {
 
     get likes() {
         return this._likes
+    }
+
+    get date() {
+        return this._date
+    }
+
+    get price() {
+        return `${this._price} €/jour`
     }
 
     get photographer() {
