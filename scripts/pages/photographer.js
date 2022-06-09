@@ -2,7 +2,8 @@ import { PhotographerFactory } from '../factories/photographerFactory.js'
 import { MediaFactory } from '../factories/mediaFactory.js'
 import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
-import { MediaCard } from '../templates/mediaCard.js'
+import { ImageCard } from '../templates/mediaCard.js'
+import { VideoCard } from '../templates/mediaCard.js'
 
 //Mettre le code JavaScript lié à la page photographer.html
 
@@ -61,7 +62,12 @@ class AppMedia {
 
         mediasModel
             .forEach(mediasModel => {
-                const template = new MediaCard(mediasModel)
+                let template = null
+                if (mediasModel.image != undefined) {  
+                    template = new ImageCard(mediasModel)                  
+                } else {
+                    template = new VideoCard(mediasModel)
+                }   
                 this.$mediasWrapper.appendChild(
                     template.createMediaPage()
                 )

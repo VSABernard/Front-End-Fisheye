@@ -1,4 +1,4 @@
-class MediaCard {
+class ImageCard {
     constructor(media) {
         this._media = media
     }
@@ -7,15 +7,36 @@ class MediaCard {
         const $wrapper = document.createElement('section')
         $wrapper.classList.add('medias-list')
 
-        const mediasCard = `         
+        const imageCard = `         
          <section class="medias_photographer"> 
-            <img class="media_photo" src='${this._media.image}'>
-            
+            <img class="media_photo" src='${this._media.image}'>            
         </section>`
         
-        $wrapper.innerHTML = mediasCard
+        $wrapper.innerHTML = imageCard
         return $wrapper
     }
 }
 
-export { MediaCard }
+class VideoCard {
+    constructor(media) {
+        this._media = media
+    }
+
+    createMediaPage() {
+        const $wrapper = document.createElement('section')
+        $wrapper.classList.add('medias-list')
+
+        const videoCard = `         
+         <section class="medias_photographer"> 
+            <video controls class="media_video">
+                <source src='${this._media.video}' type="video/mp4">
+            </video>            
+        </section>`
+        
+        $wrapper.innerHTML = videoCard
+        return $wrapper
+    }
+}
+
+export { ImageCard }
+export { VideoCard }

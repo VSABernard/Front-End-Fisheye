@@ -100,6 +100,12 @@ picture img {
     object-position: center bottom;
 }
 
+.media_video {
+    width: 360px;
+    height: 260px;
+    object-fit: cover;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;

@@ -18,10 +18,16 @@ class MediaModel {
     }
 
     get image() {
+        if (this._image === undefined) {
+            return undefined
+        }
         return `/assets/images/photos/${this._photographer.firstName}/${this._image}`
     }
 
     get video() {
+        if (this._video === undefined) {
+            return undefined
+        }
         return `/assets/images/photos/${this._photographer.firstName}/${this._video}`
     }
 
