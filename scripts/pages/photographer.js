@@ -20,6 +20,7 @@ class AppMedia {
         this.$photographersWrapper = document.querySelector('.photograph-header')
         this.$mediasWrapper = document.querySelector('.medias-content')
         this.$photographer = {}
+        this.$photographerName = document.querySelector('#photographer-name')
     }
     async init() {
         // Récupère les medias des photographes
@@ -34,9 +35,9 @@ class AppMedia {
         console.log ('mediasData : '+ mediasData )
         this.displayMedias(mediasData)
 
-        // Affichage le nombre de likes et le prix journalier du photographe   
+        // Affichage le prix journalier du photographe   
         this.displayPrice(photographerData)
-        
+
     }
     
     async displayPhotographer(photographerData) {
@@ -47,7 +48,7 @@ class AppMedia {
         const photographersModel = photographerData.map(photographer => new PhotographerFactory (photographer, 'User'))
         this.$photographer = photographersModel[0]
         console.log ('photographersModel :' + photographersModel)
-        
+
         photographersModel
             .forEach(photographerModel => {
                 const template = new ContactCard(photographerModel)
@@ -55,6 +56,9 @@ class AppMedia {
                     template.createContactPage()
                 )
             })
+
+        this.$photographerName.innerHTML = this.$photographer.name       
+
     }   
 
     async displayMedias(mediasData) {
@@ -90,6 +94,8 @@ class AppMedia {
                 )
             })
     }   
+
+    async 
 }
 
 

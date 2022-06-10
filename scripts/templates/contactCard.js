@@ -14,7 +14,6 @@ class ContactCard {
                 <h3>${this._user.city}, ${this._user.country}</h3>
                 <h4>${this._user.tagline}</h4>
             </div>
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
             <picture class="photographer-id">
                 <img alt="ID photo of the photographer" src='${this._user.portrait}'>
             </picture>
