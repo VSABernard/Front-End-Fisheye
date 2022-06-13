@@ -10,7 +10,7 @@ class ImageCard {
         const imageCard = `         
          <section class="medias-photographer"> 
             <img class="media-photo" src='${this._media.image}'>  
-            <h5>${this._media.portrait}</h5>        
+            <h5>${this._media.title}</h5>        
         </section>`
         
         $wrapper.innerHTML = imageCard
@@ -31,7 +31,8 @@ class VideoCard {
         <section class="medias-photographer"> 
             <video controls class="media-video">
                 <source src='${this._media.video}' type="video/mp4">
-            </video>            
+            </video>   
+            <h5>${this._media.title}</h5>         
         </section>`
         
         $wrapper.innerHTML = videoCard

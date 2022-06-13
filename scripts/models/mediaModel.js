@@ -6,7 +6,6 @@ class MediaModel {
         this._likes = data.likes  
         this._date = data.date 
         this._price = data.price
-        this._portrait = data.portrait
         this._photographer = photographer
     }
 
@@ -38,13 +37,6 @@ class MediaModel {
 
     get price() {
         return `${this._price} €/jour`
-    }
-
-    get portrait() {
-        if (this._portrait === undefined) {
-            return undefined
-        }
-        return `${this._photographer.firstName}/${this._portrait}`
     }
 
     get photographer() {
