@@ -1,3 +1,5 @@
+@import url("style.css");
+
 .photograph-header {
     position: relative;
 }
@@ -28,21 +30,21 @@
 
 .info h2 {
     color: #D3573C;
-    font-size: 38px;
+    font-size: 64px;
     font-weight: 500;    
     margin: 0; 
 }
 
 .info h3 {
     color: #D3573C;
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 300;    
     margin: 5px 0;
 }
 
 .info h4 {
     color: rgb(95, 89, 89);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;    
     margin: 5px 0;
 }
@@ -87,6 +89,7 @@ picture img {
     border-radius: 5px 5px 0 0;
     font-size: 24px;
     font-weight: 500;
+    z-index: 1;
 }
 
 .banner-price p {
@@ -100,146 +103,143 @@ picture img {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-content: center;
     height: max-content;
     width: auto;
     margin: 0 90px;
+    object-fit: cover;
 }
 
-.medias_photographer {
+.medias-photographer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    height: 330px;
     width: 100%;
     margin: 60px 0;
+    object-fit: cover;
+    overflow: hidden;
+    flex-basis: 30%;
+    border-radius: 10px;
 } 
 
-.media_photo {
+.media-photo, .media-video {
     display: flex;
-    height: 350px;
-    width: 420px;
-    object-fit: cover;
-    object-position: 50% 18%;
-    border-radius: 10px;
+    position: relative;
+    width: 400px;
+    aspect-ratio: 16 / 14;       
 }
 
-.media_photo img {
+.media-photo img {
     height: 100%;
     width: 100%;
     border-radius: 5px;
-    object-fit: cover;   
+    object-fit: cover;
 }
 
-.media_video {
-    display: flex;
-    height: 350px;
-    width: 420px;
+.media-video {
     object-fit: cover;
-    border-radius: 10px;
-} 
+}
 
 #contact-modal {
     display: none;
 }
 
 .bground {
-    z-index: 1;
-    margin: 0;
-    width: 100%;
-    overflow: auto;
-    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    position: fixed;
+    align-content: center;
+    margin: auto;
+    padding: 0 10px;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 80%;
+    width: 40%;
+    border-radius: 5px;
+    background-color: #DB8876;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    transition: .2s;
+}
+
+.bground[aria-hidden="true"] {
+    visibility: hidden;
+    opacity: 0;
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px 60px;
+    flex: 1;
+    max-width: 90%;
     margin: auto;
-}
-
-#contact-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
-    margin: 0;
-}
-
-.header-section {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
+    padding: 10px;
 }
 
 #title-modal, #photographer-name {
     width: 100%;
     height: fit-content;
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 600;
     margin: 0;
 }
 
 .close-form {
-    font-size: 60px;
-    font-weight: 500;
-    color: white;
-    min-width: 60px;
-    padding: 0 20px;
-    background-color: #db8876;
-    border: none;
-}
-
-.content {
     position: absolute;
-    margin: 5% auto;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    color: #fff;
+    color: white;
+    font-size: 50px;
+    font-weight: 500;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background-color: #db8876;
+    border: none;    
+    top: 30px;
+    right: 60px;
+    padding-top: 10px;
 }
 
 form {
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    margin-top: 20px;
 }
 
 form label {
     color: #312E2E;
     font-size: 36px;
     font-weight: 600;
+    margin-top: 10px;
+    padding-bottom: 0;
 }
 
 .formData {
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: self-start;
+    height: min-content;
 }
 
 form input {
     width: 100%;
     height: 68px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-top: 0;
+}
+
+textarea {
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .btn-submit {
     height: max-content;
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     padding: 20px 0;
 }

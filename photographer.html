@@ -11,7 +11,7 @@
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />    
   </head>
 
-  <body>
+  <body id="body">
     <header role="banner">
       <a aria-label="FishEye logo" aria-current="page" href="index.html">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" tabindex="1"/> </a>
@@ -25,60 +25,48 @@
     </main>
 
     <!-- Formulaire de contact -->
-    <section class="bground" id="contact-modal" role="dialog" aria-labelledby="Formulaire de contact" 
-    aria-modal="true" aria-hidden="true" tabindex="-1">
-      <div class="modal" aria-hidden="true" role="document">        
-        <header id="contact-header">
-          <div class="header-section">
-            <h2 id="title-modal">Contactez-moi</h2> 
-            <h3 id="photographer-name"></h3>
-            <!-- <img src="assets/icons/close.svg" alt="Fermer le formulaire" onclick="closeModal()" />-->
-          </div>        
-          <button class="close-form" type="button" onclick="closeModal()" aria-label="Close form" aria-hidden="false" data-dismiss="dialog">
-                X
-          </button>
-        </header>
-          
-        <div class="content">
-          <div class="modal-body">
-            <form name="reserve" id="form" method="post" action="photographer.html">
-  
-              <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caracters pour ce champ">
-                <label for="first">Prénom</label><br>
-                <input class="text-control" type="text" id="first" name="first"/><br>                  
-              </div>
-  
-              <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caracters pour ce champ">
-                <label for="last">Nom</label><br>
-                <input class="text-control" type="text" id="last" name="last"/><br>
-              </div>
-  
-              <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Adresse mail invalide">
-                <label for="email">E-mail</label><br>
-                <input class="text-control" type="email" id="email" name="email"/><br>
-              </div>
-
-              <div class="formData">
-                <label for="msg">Votre message</label>
-                <textarea class="text-control"
-                aria-label="Détail de votre message" type="text" name="message" id="message" cols="200" rows="10"></textarea>
-              </div>
-
-              <input class="btn-submit button" type="submit" value="Envoyer"/>
-            </form>
+    <section class="bground" id="contact-modal" role="dialog" aria-labelledby="dialog-title" 
+      aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="-1">
+      <div class="modal" aria-hidden="true" role="document">     
+        <h2 id="title-modal">Contactez-moi</h2> 
+        <h3 id="photographer-name"></h3>              
+        <button class="close-form" type="button" aria-label="Close form" title="Fermer cette fenêtre modale" data-dismiss="dialog">
+            X
+        </button>
+                 
+        <form name="reserve" id="form" method="post" action="photographer.html">  
+          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caracters pour ce champ">
+            <label for="first">Prénom</label><br>
+            <input class="text-control" type="text" id="first" name="first"/><br>                  
           </div>
-        </div> 
+    
+          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caracters pour ce champ">
+            <label for="last">Nom</label><br>
+            <input class="text-control" type="text" id="last" name="last"/><br>
+          </div>
+    
+          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Adresse mail invalide">
+            <label for="email">E-mail</label><br>
+            <input class="text-control" type="email" id="email" name="email"/><br>
+          </div>
+
+          <div class="formData">
+            <label for="msg">Votre message</label>
+            <textarea class="text-control"
+            aria-label="Détail de votre message" type="text" name="message" id="message" cols="120" rows="10"></textarea>
+          </div>
+
+          <input class="btn-submit button" type="submit" value="Envoyer"/>
+        </form>       
       </div>
     </section>
     
-
     <!-- Factories -->
     <script src="scripts/factories/mediaFactory.js" type="module"></script>
 
     <!-- Models -->
     <script src="scripts/models/photographerModel.js" type="module"></script>
     <script src="scripts/models/mediaModel.js" type="module"></script>
-    <script src="scripts/models/contactModel.js" type="module"></script>
 
     <!-- Pages -->
     <script src="scripts/pages/photographer.js" type="module"></script>

@@ -8,8 +8,9 @@ class ImageCard {
         $wrapper.classList.add('medias-list')
 
         const imageCard = `         
-         <section class="medias_photographer"> 
-            <img class="media_photo" src='${this._media.image}'>            
+         <section class="medias-photographer"> 
+            <img class="media-photo" src='${this._media.image}'>  
+            <h5>${this._media.portrait}</h5>        
         </section>`
         
         $wrapper.innerHTML = imageCard
@@ -27,8 +28,8 @@ class VideoCard {
         $wrapper.classList.add('medias-list')
 
         const videoCard = `         
-        <section class="medias_photographer"> 
-            <video controls class="media_video">
+        <section class="medias-photographer"> 
+            <video controls class="media-video">
                 <source src='${this._media.video}' type="video/mp4">
             </video>            
         </section>`

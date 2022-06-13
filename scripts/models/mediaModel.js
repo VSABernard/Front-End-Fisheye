@@ -6,12 +6,8 @@ class MediaModel {
         this._likes = data.likes  
         this._date = data.date 
         this._price = data.price
+        this._portrait = data.portrait
         this._photographer = photographer
-        
-        // console.log('this photographer :')
-        // console.table(this._photographer)
-        // console.log('photographer.name : ' + photographer.name)
-        // console.log('this.photographer.name : ' + this._photographer.name)
     }
 
     get title() {
@@ -42,6 +38,13 @@ class MediaModel {
 
     get price() {
         return `${this._price} €/jour`
+    }
+
+    get portrait() {
+        if (this._portrait === undefined) {
+            return undefined
+        }
+        return `${this._photographer.firstName}/${this._portrait}`
     }
 
     get photographer() {

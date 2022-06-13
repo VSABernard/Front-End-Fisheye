@@ -1,68 +1,41 @@
+// DOM elements
+const body = document.querySelector('#body')
+const openModalBtn = document.querySelector('.modal-button')
+const main = document.querySelector('#main')
+const modal = document.querySelector('.bground')
+const modalCloseBtn = document.querySelector('.close-form')
+ 
+// Functions
+const onOpenModal = () => {
+    main.setAttribute('aria-hidden', 'true')
+    modal.setAttribute('aria-hidden', 'false')
+    body.classList.add('no-scroll')
+    modal.style.display = 'flex'
+    modalCloseBtn.focus()
+}
+ 
+const onCloseModal = () => {
+    main.setAttribute('aria-hidden','false')
+    modal.setAttribute('aria-hidden', 'true')
+    body.classList.remove('no-scroll')
+    modal.style.display = 'none'
+    openModalBtn.focus()
+}
+ 
+// Ouvrir la modale avec le bouton "Contactez-moi"
+openModalBtn.addEventListener('click', onOpenModal)
 
-// const main = document.getElementById('main')
-// const modalbg = document.querySelectorAll('.bground')
-// const modalBtn = document.querySelectorAll('.modal-button')
-// const modal = document.getElementById('modal')
-// const firstName = document.querySelector('#first')
+// Fermer la modale
+modalCloseBtn.addEventListener('click', onCloseModal)
+ 
+// Fermer la modale avec la touche Esc
+modal.addEventListener('keydown', logKey)
 
-// // Afficher la modale de contact
-// modalBtn.forEach((btn) => btn.addEventListener('click', launchModal))
-
-// // launch modal form
-// function launchModal() {
-//     main.setAttribute('aria-hidden', true)
-//     modal.setAttribute('aria-hidden', false)
-//     modal.style.display = 'block'
-//     modalbg.style.display = 'block'
-//     firstName.focus()
-// }
-
-
-
-
-
-
-
-
-//SOLUTION 2
-
-document.addEventListener('DOMContentLoaded',() => { 
-    const triggers = document.querySelectorAll('[aria-haspopup="dialog"]')
-    const doc = document.getElementById('main')
-    const open = function (dialog) {
-        dialog.setAttribute('aria-hidden', false)
-        dialog.style.display = 'block'
-        doc.setAttribute('aria-hidden', true)
-        doc.style.display = 'none'
-    }
-
-    triggers.forEach((trigger) => {
-        const dialog = document.getElementById('contact-modal')
+function logKey(event) {
+    console.log(`keypress : ${event.code}`)
     
-        trigger.addEventListener('click', (event) => {
-            event.preventDefault()
+    if ('Escape' === event.code) {
+        onCloseModal()        
+    }
+}
 
-            open(dialog)
-        })
-    })
-})
-
-
-
-
-
-
-
-
-
-
-
-// function displayModal() {
-//     modal.style.display = 'flex'
-//     document.querySelector('.close-form').focus()
-// }
-
-// function closeModal() {
-//     const modal = document.getElementById('contact-modal')
-//     modal.style.display = 'none'
-// }
