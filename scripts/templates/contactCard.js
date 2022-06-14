@@ -1,3 +1,5 @@
+// La mise en place du header de la page du photographe
+
 class ContactCard {
     constructor(user) {
         this._user = user
@@ -23,7 +25,6 @@ class ContactCard {
         return $wrapper
     }
 }
-
     
 class PriceCard {
     constructor(user) {

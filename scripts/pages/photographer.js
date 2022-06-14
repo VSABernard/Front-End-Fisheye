@@ -29,7 +29,6 @@ class AppMedia {
         const photographerData = await this.api.getPhotographer(idPhotographer)       
         this.displayPhotographer(photographerData)
 
-
         // Affichage des medias du photographe
         const mediasData = await this.api.getMediasByPhotographer(idPhotographer)
         console.log ('mediasData : '+ mediasData )
@@ -37,9 +36,9 @@ class AppMedia {
 
         // Affichage le prix journalier du photographe   
         this.displayPrice(photographerData)
-
     }
     
+    // Afficher les détails du photographe
     async displayPhotographer(photographerData) {
         console.log ('display photographer')
         console.log ('photographerData :')
@@ -61,6 +60,7 @@ class AppMedia {
 
     }   
 
+    // Afficher la liste de l'album photos et vidéo du photographe
     async displayMedias(mediasData) {
         console.log ('mediasData :' + mediasData)
         console.table (mediasData)    
@@ -83,6 +83,7 @@ class AppMedia {
             })        
     }  
     
+    // Afficher le banner du prix journalier
     async displayPrice(photographerData) {
         const photographersModel = photographerData.map(photographer => new PhotographerFactory (photographer, 'User'))
 
@@ -93,11 +94,9 @@ class AppMedia {
                     template.createPriceCard()
                 )
             })
-    }   
-
+    } 
     async 
 }
-
 
 const appMedia = new AppMedia()
 appMedia.init()

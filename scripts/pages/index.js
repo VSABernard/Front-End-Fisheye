@@ -32,26 +32,7 @@ class AppPhotographer {
                     template.createUserCard()
                 )
             })
-    /*
-        photographers
-            .forEach((photographer) => {
-                
-
-
-                
-                const photographerModel = photographerFactory(photographer)
-                console.log ('photographerModel :' + photographerModel)
-                const userCardDOM = photographerModel.getUserCardDOM()
-                console.log ('userCardDOM :' + userCardDOM)
-                photographersSection.appendChild(userCardDOM)
-                
-            })*/
     }    
-
-    async main() {
-       
-     
-    }
 }
 
 const appPhotographer = new AppPhotographer()

@@ -18,7 +18,6 @@ class Api {
         return photographers
     }
 
-
     /**
      * Renvoyer le detail d'un photographe
      * @param identifiant du photographe
@@ -52,7 +51,6 @@ class Api {
         console.table (medias)
         return ({media: [...medias]})
     }
-
 
     /**
      * Renvoyer la liste des medias d'un photographe

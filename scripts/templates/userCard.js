@@ -1,3 +1,5 @@
+// La mise en place de la page principale
+
 class UserCard {
     constructor(user) {
         this._user = user

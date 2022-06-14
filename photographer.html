@@ -35,25 +35,24 @@
         </button>
                  
         <form name="reserve" id="form" method="post" action="photographer.html">  
-          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caracters pour ce champ">
-            <label for="first">Prénom</label><br>
+          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caractères pour ce champ">
+            <label for="first">Prénom</label>
             <input class="text-control" type="text" id="first" name="first"/><br>                  
           </div>
     
-          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caracters pour ce champ">
-            <label for="last">Nom</label><br>
+          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caractères pour ce champ">
+            <label for="last">Nom</label>
             <input class="text-control" type="text" id="last" name="last"/><br>
           </div>
     
           <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Adresse mail invalide">
-            <label for="email">E-mail</label><br>
+            <label for="email">E-mail</label>
             <input class="text-control" type="email" id="email" name="email"/><br>
           </div>
 
-          <div class="formData">
+          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez laisser un message d'au moins 10 caractères">
             <label for="msg">Votre message</label>
-            <textarea class="text-control"
-            aria-label="Détail de votre message" type="text" name="message" id="message" cols="120" rows="10"></textarea>
+            <textarea class="text-control" aria-label="Détail de votre message" type="text" name="message" id="msg" cols="120" rows="250"></textarea>
           </div>
 
           <input class="btn-submit button" type="submit" value="Envoyer"/>

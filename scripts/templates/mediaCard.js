@@ -1,3 +1,5 @@
+// La mise en place des photos et vidéo du photographe
+
 class ImageCard {
     constructor(media) {
         this._media = media
