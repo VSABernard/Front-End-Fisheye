@@ -2,9 +2,9 @@ import { PhotographerFactory } from '../factories/photographerFactory.js'
 import { MediaFactory } from '../factories/mediaFactory.js'
 import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
-import { PriceCard } from '../templates/contactCard.js'
-import { ImageCard } from '../templates/mediaCard.js'
-import { VideoCard } from '../templates/mediaCard.js'
+import { PriceCard } from '../templates/mediaCard.js'
+import { ImageCard, VideoCard } from '../templates/mediaCard.js'
+import { imageCardWithLightbox } from '../decorators/lightBox.js'
 
 //Mettre le code JavaScript lié à la page photographer.html
 
@@ -73,7 +73,7 @@ class AppMedia {
             .forEach(mediasModel => {
                 let template = null
                 if (mediasModel.image != undefined) {  
-                    template = new ImageCard(mediasModel)                  
+                    template =  imageCardWithLightbox(new ImageCard(mediasModel))                  
                 } else {
                     template = new VideoCard(mediasModel)
                 }   
@@ -84,18 +84,17 @@ class AppMedia {
     }  
     
     // Afficher le banner du prix journalier
-    async displayPrice(photographerData) {
-        const photographersModel = photographerData.map(photographer => new PhotographerFactory (photographer, 'User'))
+    async displayPrice(mediasData) {
+        const mediasModel = mediasData.map(media => new MediaFactory (media, 'Media', this.$photographer))
 
-        photographersModel
-            .forEach(photographerModel => {
-                const template = new PriceCard(photographerModel)
-                this.$photographersWrapper.appendChild(
+        mediasModel
+            .forEach(mediasModel => {
+                const template = new PriceCard(mediasModel)
+                this.$mediasWrapper.appendChild(
                     template.createPriceCard()
                 )
             })
-    } 
-    async 
+    }
 }
 
 const appMedia = new AppMedia()

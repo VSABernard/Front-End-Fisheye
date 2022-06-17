@@ -17,7 +17,7 @@ class ContactCard {
                 <h4>${this._user.tagline}</h4>
             </div>
             <picture class="photographer-id">
-                <img alt="ID photo of the photographer" src='${this._user.portrait}'>
+                <img alt="ID photo of the photographer'${this._user.name}'" src='${this._user.portrait}'>
             </picture>
         </article>`
         
@@ -26,22 +26,4 @@ class ContactCard {
     }
 }
     
-class PriceCard {
-    constructor(user) {
-        this._user = user
-    }
-    createPriceCard() {
-        const $wrapper = document.createElement('div')
-        $wrapper.classList.add('banner-price')
-
-        const priceCard = `
-        <p class="price" aria-label="Daily rate of the photographer">
-            ${this._user.price}</p>
-        </p>`
-        $wrapper.innerHTML = priceCard
-        return $wrapper
-    }
-}
-
 export { ContactCard }
-export { PriceCard }
