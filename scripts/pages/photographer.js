@@ -73,7 +73,7 @@ class AppMedia {
             .forEach(mediasModel => {
                 let template = null
                 if (mediasModel.image != undefined) {  
-                    template =  imageCardWithLightbox(new ImageCard(mediasModel))                  
+                    template =  imageCardWithLightbox(new ImageCard(mediasModel))                
                 } else {
                     template = new VideoCard(mediasModel)
                 }   

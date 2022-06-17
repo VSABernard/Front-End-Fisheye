@@ -321,8 +321,12 @@ input[data-error]::after {
 
 /* LIGHTBOX */
  
-.lightbox-modal {
-    display: flex;
+/* .lightbox-modal  {
+    display: none;
+} 
+
+ .lightbox-modal  {
+    display: block;
     position: fixed;
     margin: 0;
     padding: 60px;
@@ -334,10 +338,12 @@ input[data-error]::after {
     height: 100%;
     width: 100%;
     opacity: 0.9;
-    background-color: red;
+    overflow: hidden;
 }   
+*/
 
- 
+
+ /*
 .background-lightbox  {
     display: block;
     justify-content: center;
@@ -359,7 +365,7 @@ input[data-error]::after {
     width: 90%;
     background-color: #db8876;
 } 
-/*
+/* 
 .lightbox-content { 
     display: flex;
     flex-direction: column;
