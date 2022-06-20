@@ -4,7 +4,7 @@ import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
 import { PriceCard } from '../templates/mediaCard.js'
 import { ImageCard, VideoCard } from '../templates/mediaCard.js'
-import { imageCardWithLightbox } from '../decorators/lightBox.js'
+import { mediaCardWithLightbox } from '../decorators/lightBox.js'
 
 //Mettre le code JavaScript lié à la page photographer.html
 
@@ -73,9 +73,9 @@ class AppMedia {
             .forEach(mediasModel => {
                 let template = null
                 if (mediasModel.image != undefined) {  
-                    template =  imageCardWithLightbox(new ImageCard(mediasModel))                
+                    template =  mediaCardWithLightbox(new ImageCard(mediasModel))                
                 } else {
-                    template = new VideoCard(mediasModel)
+                    template = mediaCardWithLightbox(new VideoCard(mediasModel))
                 }   
                 this.$mediasWrapper.appendChild(
                     template.createMediaPage()

@@ -21,6 +21,7 @@ class MediaModel {
     }
 
     get video() {
+        console.log('video : ' + this._video)
         if (this._video === undefined) {
             return undefined
         }

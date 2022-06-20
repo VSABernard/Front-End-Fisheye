@@ -15,7 +15,7 @@ class ImageCard {
         const imageCard = `         
          <section class="medias-photographer" role="dialog" aria-labelledby="dialog-image" 
             aria-describedby="dialog-image" aria-modal="true" aria-hidden="true" tabindex="-1"> 
-            <img class="media-photo" src='${this._media.image}' alt="${this._media.title}">  
+            <img class="media-photo" aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}">  
             <h5>${this._media.title}</h5>        
         </section>`
         
@@ -35,7 +35,7 @@ class VideoCard {
         const videoCard = `         
         <section class="medias-photographer" role="dialog" aria-labelledby="dialog-video" 
             aria-describedby="dialog-video" aria-modal="true" aria-hidden="true" tabindex="-1"> 
-            <video controls class="media-video">
+            <video controls class="media-video" aria-modal="true" aria-hidden="true">
                 <source src='${this._media.video}' type="video/mp4" alt="${this._media.title}">
             </video>   
             <h5>${this._media.title}</h5>         

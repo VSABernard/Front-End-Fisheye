@@ -361,11 +361,12 @@ input[data-error]::after {
     flex-direction: row;
     justify-content: center;
     align-content: center;
+    position: fixed;
     height: 100%;
-    width: 100%;
+    width: 90%;
     min-width: 320px;
     margin: 0;
-    padding-left: 10px;
+    padding-top: 30px;
     top: 0;
     bottom: 0;
     right: 0;
@@ -375,44 +376,50 @@ input[data-error]::after {
 .lightbox-content { 
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-between;
+    position: relative;
+    flex: 6;
     height: 100%;
     width: 50%;
     margin: auto;
-    padding-top: 50px;
-    padding-left: 60px;
     border:none;
-    overflow: hidden;
 }
 
-#lightbox-image {
+/* .lightbox-media-image[aria-hidden="true"], .lightbox-media-video[aria-hidden="true"] {
+    display: none;
+} */
+
+.lightbox-media-image, .lightbox-media-video {
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 90%;
-    width: 95%;
-    margin: 0;
+    height: 100%;
+    width: 80%;
+    margin: auto;
     overflow: hidden;
 }
 
-#lightbox-image img {
+.lightbox-media-image img, .lightbox-media-video video {
+    height: 90%;
+    width: 90%;
     object-fit: cover;
-    object-position: 50% 40%;
+    object-position: 50% 45%;
 }
 
 figcaption {
+    display: flex;
     color: rgb(152, 30, 30);
     font-size: 20px;
     font-weight: 700;
     padding-top: 10px;
+    height: 50px;
     width: 100%;
     border: none; 
 }
 
 .close-iframe, .right-iframe, .left-iframe {
     display: flex;
-    flex: 0.1;
-    position: inherit;
+    flex: 1;
     color: rgb(152, 30, 30);
     width: auto;
     height: 100px;
@@ -422,8 +429,10 @@ figcaption {
 }
 
 .left-iframe, .right-iframe {
+    position: relative;
     font-size: 70px;
     font-weight: 600;
+    width: 30%;
     right: 0;
     left: 0;
     margin-top: auto;
@@ -431,16 +440,22 @@ figcaption {
     padding-left: 20px;
 }
 
+.right-iframe {
+    margin-right: -100px;
+}
+
 .left-iframe {
     margin-left: 150px;
 }
 
 .close-iframe {
+    position: relative;
+    text-align: right;
     font-size: 50px;
     font-weight: 700;
-    margin-top: 40px;
-    margin-right: 150px;
+    margin-top: 50px;
     margin-left: -50px;
+    float: right;
 } 
 
 
