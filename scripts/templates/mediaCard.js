@@ -55,7 +55,7 @@ class PriceCard {
         $wrapper.classList.add('banner-price')
 
         const priceCard = `
-        <p class="price" aria-label="Daily rate of the photographer">
+        <p class="price" aria-label="Daily rate of the photographer" tabindex="1">
             ${this._user.price}
         </p>`
         $wrapper.innerHTML = priceCard

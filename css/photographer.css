@@ -105,7 +105,8 @@ picture img {
     justify-content: space-around;
     gap: 10px;
     width: 100%;
-    object-fit: cover;
+    object-fit: fill;
+    object-position: 50% 50%;
     overflow: hidden;
     border-radius: 5px;
 } 
@@ -122,13 +123,17 @@ picture img {
     display: flex;
     position: relative;
     width: 400px;
+    height: auto;
     aspect-ratio: 3 / 2.5; 
-    border-radius: 10px;  
+    border-radius: 10px; 
+    object-fit: cover;
+    object-position: 50% 40%;
+    cursor: pointer; 
 }
 
 .media-photo img {
-    height: auto;
-    width: auto;
+    height: 50%;
+    width: 70%;
     border-radius: 5px;
     object-fit: cover;
 }
@@ -151,7 +156,7 @@ picture img {
     border-radius: 5px 5px 0 0;
     font-size: 24px;
     font-weight: 500;
-    z-index: 1;
+    z-index: 100;
 }
 
 .banner-price p {
@@ -319,130 +324,128 @@ input[data-error]::after {
     color: red;
 } 
 
-/* LIGHTBOX */
- 
-/* .lightbox-modal  {
-    display: none;
-} 
 
- .lightbox-modal  {
+/* LIGHTBOX */
+
+.lightbox-modal.modal-on  {
     display: block;
+    visibility: visible;
     position: fixed;
-    margin: 0;
-    padding: 60px;
-    z-index: 100;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    z-index: 1;
     left: 0;
+    top: 0;
     height: 100%;
     width: 100%;
-    opacity: 0.9;
-    overflow: hidden;
-}   
-*/
+    overflow: auto;
+    background-color:rgba(244, 244, 247, 0.95);
 
-
- /*
-.background-lightbox  {
-    display: block;
-    justify-content: center;
-    align-content: center;
-    margin: 0;
-    height: 98%;
-    width: 98%;
-    background-color: greenyellow;
-    opacity: 1;
 }
 
+.background-lightbox {
+    position: relative; 
+    height: 97%;
+    width: 100%;
+    min-width: 320px;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    background: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
 .lightbox {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin: auto;
-    height: 90%;
-    width: 90%;
-    background-color: #db8876;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    min-width: 320px;
+    margin: 0;
+    padding-left: 10px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 } 
-/* 
+ 
 .lightbox-content { 
     display: flex;
     flex-direction: column;
-    justify-content: stretch;
-    align-self: center;
-    flex: 1;
-    gap: 10px;
+    justify-content: start;
     height: 100%;
-    width: 80%;
+    width: 50%;
+    margin: auto;
+    padding-top: 50px;
+    padding-left: 60px;
     border:none;
     overflow: hidden;
 }
 
-.lightbox-iframe {
-    height: 80%;
-    width: 100%;
-    margin: 0 auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: 5px;
-    overflow: hidden;
-    
-} 
-
-.lightbox-content p {
+#lightbox-image {
     display: flex;
-    justify-content: center;
-    color: rgb(152, 30, 30);
-    font-size: 30px;
-    font-weight: 700;
-    margin: 20px;
-    width: 70%;
-}
-
-.lightbox-image {
-    display: flex;
-    object-fit: fill;
-    object-position: center;
-    overflow: hidden;
-    border: 0;
-    height: 100%;
-    width: 70%;
-    margin: auto;
-}
-
-.background-lightbox img {
-    width: 800px;
-    height: 600px;
-    overflow: hidden;
-    object-fit: fill;
-}
-
-.buttons-iframe {
-    display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    height: 90%;
+    width: 95%;
     margin: 0;
-    padding: 0;
-    flex: 0.2;
-    width: 80%;
+    overflow: hidden;
 }
 
-.close-iframe, .right-button, .left-button {
+#lightbox-image img {
+    object-fit: cover;
+    object-position: 50% 40%;
+}
+
+figcaption {
     color: rgb(152, 30, 30);
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 700;
-    width: 100px;
-    height: 100px;
-    background-color: transparent;
+    padding-top: 10px;
+    width: 100%;
     border: none; 
 }
 
+.close-iframe, .right-iframe, .left-iframe {
+    display: flex;
+    flex: 0.1;
+    position: inherit;
+    color: rgb(152, 30, 30);
+    width: auto;
+    height: 100px;
+    background-color: transparent;
+    border: none; 
+    cursor: pointer;
+}
+
+.left-iframe, .right-iframe {
+    font-size: 70px;
+    font-weight: 600;
+    right: 0;
+    left: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 20px;
+}
+
+.left-iframe {
+    margin-left: 150px;
+}
+
 .close-iframe {
-    margin-top: 60px;
-    margin-right: 80px;
-} */
+    font-size: 50px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-right: 150px;
+    margin-left: -50px;
+} 
+
+
+
+/* LES RESPONSIVES */
 
 @media screen and (max-width: 900px)  {
     #title-modal, #photographer-name {
