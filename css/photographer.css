@@ -185,12 +185,12 @@ picture img {
     bottom: 0;
     left: 0;
     height: 95%;
-    max-height: 1440px;
+    max-height: 1200px;
     width: 40%;
     min-width: 320px;
     border-radius: 5px;
     background-color: #DB8876;
-    overflow: scroll;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     transition: .2s;
 }
@@ -202,10 +202,12 @@ picture img {
 
 .modal {
     flex: 1;
-    width: 90%;
-    max-height: 90%;
+    width: 85%;
+    height: 100%;
+    max-height: 800px;
     margin: auto;
-    padding: 20px;
+    padding: 40px 20px 20px;
+    scroll-behavior: unset;
 }
 
 #title-modal, #photographer-name {
@@ -232,6 +234,7 @@ picture img {
     top: 10px;
     right: 20px;
     padding-top: 10px;
+    cursor: pointer;
 }
 
 form {
@@ -253,9 +256,9 @@ form label {
 .formData {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: auto;
     height: auto;
-    min-height: 100px;
+    min-height: 50px;
     margin-bottom: 10px;
     padding-bottom: 0;
 }
@@ -263,7 +266,7 @@ form label {
 form input {
     width: auto;
     max-height: 100%;
-    min-height: 50px;
+    min-height: 40px;
     border: none;
     border-radius: 10px;
 }
@@ -271,9 +274,8 @@ form input {
 textarea.text-message {
     margin-bottom: 20px;
     resize : both;
-    width : 100%;
-    min-height : 200px;
-    max-height : 300px;
+    width : auto;
+    min-height : 130px;
     border-radius: 8px;
     font-size: 18px;
 }
@@ -288,7 +290,7 @@ textarea.text-message {
 
 .btn-submit {
     height: max-content;
-    margin: 20px 0;
+    margin: 10px 0;
     padding: 20px 0;
     font-size: 16px;
 }

@@ -56,8 +56,7 @@ class AppMedia {
                 )
             })
 
-        this.$photographerName.innerHTML = this.$photographer.name       
-
+        this.$photographerName.innerHTML = this.$photographer.name    
     }   
 
     // Afficher la liste de l'album photos et vidéo du photographe
@@ -70,12 +69,12 @@ class AppMedia {
         console.table (mediasModel)
 
         mediasModel
-            .forEach(mediasModel => {
+            .forEach((mediaModel, index) => {
                 let template = null
-                if (mediasModel.image != undefined) {  
-                    template =  mediaCardWithLightbox(new ImageCard(mediasModel))                
+                if (mediaModel.image != undefined) {  
+                    template =  mediaCardWithLightbox(new ImageCard(mediaModel), mediasModel, index)                
                 } else {
-                    template = mediaCardWithLightbox(new VideoCard(mediasModel))
+                    template = mediaCardWithLightbox(new VideoCard(mediaModel), mediasModel, index)
                 }   
                 this.$mediasWrapper.appendChild(
                     template.createMediaPage()

@@ -1,9 +1,9 @@
 import {LightboxModal} from '../templates/lightboxModal.js' 
 
-function mediaCardWithLightbox(lightboxCard) {
+function mediaCardWithLightbox(lightboxCard, allMedias, index) {
     lightboxCard.$wrapper.addEventListener('click', () => {
         console.log('click lightbox!')
-        const lightboxMedia = new LightboxModal(lightboxCard._media)
+        const lightboxMedia = new LightboxModal(lightboxCard._media, allMedias, index)
         lightboxMedia.render()
     })        
 

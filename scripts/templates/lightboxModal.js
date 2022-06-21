@@ -1,7 +1,13 @@
 // SOLUTION AVEC DECORATOR PATTERN
 class LightboxModal {
-    constructor(media) {
-        this._media = media
+    constructor(currentMedia, allMedias, index) {
+        this._media = currentMedia
+        this._allMedias = allMedias
+        this._index = index
+        console.log ('allMedias :')
+        console.table (allMedias)
+        console.log('current media : ' + currentMedia.title)
+        console.log ('index :' + index)
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('background-lightbox')
         this.$modalWrapper = document.querySelector('.lightbox-modal')
@@ -12,7 +18,7 @@ class LightboxModal {
 
         console.log('createLightBox media: ' + JSON.stringify(this._media))
         let lightboxMedia = `
-            <section class="lightbox" role="dialog" aria-labelledby="dialog-lightbox"
+            <section class="lightbox" role="dialog" aria-label="Image closeup view" aria-labelledby="dialog-lightbox"
                 aria-describedby="dialog-iframe" aria-modal="true" aria-hidden="true" tabindex="2">
                 <button class="left-iframe" type="button" name="btn-left-iframe" aria-label="Défiler media vers gauche" title="Défiler media vers gauche" data-dismiss="dialog">
                      <
@@ -81,6 +87,7 @@ class LightboxModal {
         this.$modalWrapper.classList.remove('modal-on')
         this.$wrapper.classList.remove('background-lightbox')
         this.$wrapper.innerHTML = ''
+        
     }
 
     // Faire défiler le contenu du lightbox vers gauche
@@ -88,10 +95,24 @@ class LightboxModal {
         const previousButton = this.$wrapper.querySelector('.left-iframe')
         
         previousButton
-            .addEventListener('click', () => {
+            .addEventListener('click', () => {                             
                 console.log('Cliquez sur le bouton gauche :')
+                this.showPreviousMedia()
             })
     }    
+
+    showPreviousMedia() {
+        console.log('showPreviousMedia')
+        if(this._index == 0) {
+            return
+        }
+        this._index-- 
+        this._media = this._allMedias[this._index]
+        console.log('Title image precedente :' + this._media.title)
+        // Remise à 0 la fênetre de la lightbox avant d'afficher le media précedent
+        this.closeLightbox()
+        this.render()
+    }
 
     // Faire défiler le contenu du lightbox vers droit
     onNextMedia() {
@@ -100,36 +121,53 @@ class LightboxModal {
         nextButton
             .addEventListener('click', () => {
                 console.log('Cliquez sur le bouton droit :')
+                this.showNextMedia()
             })
     }    
     
-    onKeydown() {
-        window.addEventListener('keydown', (event) => {
-            if (event.defaultPrevented) {
-                return // Ne rien faire si l'événément est déjà déclanché 
-            }
-          
-            switch (event.key) {
-            case 'ArrowLeft':
-                // Faire quelque chose avec la touche "GAUCHE"
-                console.log('Touche gauche :')
-                break
-            case 'ArrowRight':
-                // Faire quelque chose avec la touche "DROIT"
-                console.log('Touche droit :')
-                break 
-            case 'Escape':
-                // Faire quelque chose avec la touche "ECHAP"
-                this.closeLightbox()                
-                break 
-            default:
-                return  // Quitter lorsque l'événement n'est pas reconnu
-            }
-          
-            // Annuler l'action par defaut pour eviter de le gérer en double
-            event.preventDefault() 
-        }, true)
+    showNextMedia() {
+        console.log('showNextMedia')
+        if(this._index == (this._allMedias.length-1)) {
+            return
+        }
+        this._index++
+        this._media = this._allMedias[this._index]
+        console.log('Title image suivante :' + this._media.title)
+        // Remise à 0 la fênetre de la lightbox avant d'afficher le media suivant
+        this.closeLightbox()
+        this.render()  
     }
+
+    // Gérer les événements avec le clavier
+    // onKeydown() {
+    //     window.addEventListener('keydown', (event) => {
+    //         if (event.defaultPrevented) {
+    //             return // Ne rien faire si l'événément est déjà déclanché 
+    //         }
+          
+    //         switch (event.key) {
+    //         case 'ArrowLeft':
+    //             // Faire quelque chose avec la touche "GAUCHE"
+    //             console.log('Touche gauche :')
+    //             this.showPreviousMedia()
+    //             break
+    //         case 'ArrowRight':
+    //             // Faire quelque chose avec la touche "DROIT"
+    //             console.log('Touche droit :')
+    //             this.showNextMedia()
+    //             break 
+    //         case 'Escape':
+    //             // Faire quelque chose avec la touche "ECHAP"
+    //             this.closeLightbox()  
+    //             break    
+    //         default:
+    //             return  // Quitter lorsque l'événement n'est pas reconnu
+    //         }
+          
+    //         // Annuler l'action par defaut pour eviter de le gérer en double
+    //         event.preventDefault() 
+    //     }, true)
+    // }
 
     render() {
         this.createLightbox()

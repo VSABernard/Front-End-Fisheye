@@ -1,8 +1,8 @@
 // La mise en place des photos et vidéo du photographe
 
 class ImageCard {
-    constructor(media) {
-        this._media = media
+    constructor(currentMedia) {
+        this._media = currentMedia 
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('medias-list')
     }
@@ -25,8 +25,9 @@ class ImageCard {
 }
 
 class VideoCard {
-    constructor(media) {
-        this._media = media
+    constructor(currentMedia, allMedias) {
+        this._media = currentMedia
+        this._allMedias = allMedias
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('medias-list')
     }
@@ -47,8 +48,8 @@ class VideoCard {
 }
 
 class PriceCard {
-    constructor(media) {
-        this._user = media
+    constructor(currentMedia) {
+        this._user = currentMedia        
     }
     createPriceCard() {
         const $wrapper = document.createElement('div')
