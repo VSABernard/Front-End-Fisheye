@@ -1,6 +1,6 @@
 // La mise en place des photos et vidéo du photographe
 
-class ImageCard {
+class MediasCard {
     constructor(currentMedia) {
         this._media = currentMedia 
         this.$wrapper = document.createElement('section')
@@ -12,58 +12,58 @@ class ImageCard {
     }
     
     createMediaPage() {
-        const imageCard = `         
+        let mediaCard = `         
          <section class="medias-photographer" role="dialog" aria-labelledby="dialog-image" 
-            aria-describedby="dialog-image" aria-modal="true" aria-hidden="true" tabindex="-1"> 
-            <img class="media-photo" aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}">  
-            <h5>${this._media.title}</h5>        
-        </section>`
+            aria-describedby="dialog-image" aria-modal="true" aria-hidden="true"> 
+            `
+
+        if (this._media.image != undefined) {
+            mediaCard += `
+                    <img class="media-photo" aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}" tabindex="9">  
+                    <article class="media-details">
+                        <h5 tabindex="10" >${this._media.title}</h5>   
+                        <h6 tabindex="11">${this._media.likes} </h6>  
+                        <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
+                    </article> `  }
+        else {
+            mediaCard += `
+                    <video class="media-video" aria-modal="true" aria-hidden="true">
+                        <source src='${this._media.video}' type="video/mp4" alt="${this._media.title}" tabindex="9">
+                    </video>   
+                    <article class="media-details">
+                        <h5 tabindex="10">${this._media.title}</h5>   
+                        <h6 tabindex="11">${this._media.likes} </h6>  
+                        <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
+                    </article> ` }
+        mediaCard += `
+                </section> `
         
-        this.$wrapper.innerHTML = imageCard
+        this.$wrapper.innerHTML = mediaCard
         return this.$wrapper
     }  
 }
 
-class VideoCard {
-    constructor(currentMedia, allMedias) {
-        this._media = currentMedia
-        this._allMedias = allMedias
-        this.$wrapper = document.createElement('section')
-        this.$wrapper.classList.add('medias-list')
-    }
-
-    createMediaPage() {
-        const videoCard = `         
-        <section class="medias-photographer" role="dialog" aria-labelledby="dialog-video" 
-            aria-describedby="dialog-video" aria-modal="true" aria-hidden="true" tabindex="-1"> 
-            <video controls class="media-video" aria-modal="true" aria-hidden="true">
-                <source src='${this._media.video}' type="video/mp4" alt="${this._media.title}">
-            </video>   
-            <h5>${this._media.title}</h5>         
-        </section>`
-        
-        this.$wrapper.innerHTML = videoCard
-        return this.$wrapper
-    }
-}
-
-class PriceCard {
+class FooterCard {
     constructor(currentMedia) {
-        this._user = currentMedia        
+        this._user = currentMedia  
+        this._media = currentMedia       
     }
-    createPriceCard() {
+    createFooterCard() {
         const $wrapper = document.createElement('div')
-        $wrapper.classList.add('banner-price')
+        $wrapper.classList.add('banner-footer')
 
-        const priceCard = `
-        <p class="price" aria-label="Daily rate of the photographer" tabindex="1">
-            ${this._user.price}
-        </p>`
-        $wrapper.innerHTML = priceCard
+        const footer = `
+        <footer class="footer" aria-label="Banner of likes and daily rate" tabindex="6">
+            <section class="likes" aria-label="Total number of likes">
+                <span aria-label="Number of ${this._media.likes} likes">${this._media.likes}</span>
+                <i class="fa-solid fa-heart" id="footer-likes" aria-label="Button like"></i>
+            </section>
+            <p class="price" aria-label="Daily rate of the photographer">${this._user.price}</p>
+        </footer>`
+        $wrapper.innerHTML = footer
         return $wrapper
     }
 }
 
-export { ImageCard }
-export { VideoCard }
-export { PriceCard }
+export { MediasCard }
+export { FooterCard }

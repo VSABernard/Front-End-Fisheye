@@ -2,8 +2,8 @@ import { PhotographerFactory } from '../factories/photographerFactory.js'
 import { MediaFactory } from '../factories/mediaFactory.js'
 import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
-import { PriceCard } from '../templates/mediaCard.js'
-import { ImageCard, VideoCard } from '../templates/mediaCard.js'
+import { FooterCard } from '../templates/mediaCard.js'
+import { MediasCard } from '../templates/mediaCard.js'
 import { mediaCardWithLightbox } from '../decorators/lightBox.js'
 
 //Mettre le code JavaScript lié à la page photographer.html
@@ -34,8 +34,8 @@ class AppMedia {
         console.log ('mediasData : '+ mediasData )
         this.displayMedias(mediasData)
 
-        // Affichage le prix journalier du photographe   
-        this.displayPrice(photographerData)
+        // Affichage du footer du photographe   
+        this.displayFooter(photographerData)
     }
     
     // Afficher les détails du photographe
@@ -56,7 +56,8 @@ class AppMedia {
                 )
             })
 
-        this.$photographerName.innerHTML = this.$photographer.name    
+        this.$photographerName.innerHTML = this.$photographer.name       
+
     }   
 
     // Afficher la liste de l'album photos et vidéo du photographe
@@ -70,12 +71,7 @@ class AppMedia {
 
         mediasModel
             .forEach((mediaModel, index) => {
-                let template = null
-                if (mediaModel.image != undefined) {  
-                    template =  mediaCardWithLightbox(new ImageCard(mediaModel), mediasModel, index)                
-                } else {
-                    template = mediaCardWithLightbox(new VideoCard(mediaModel), mediasModel, index)
-                }   
+                const template = mediaCardWithLightbox(new MediasCard(mediaModel), mediasModel, index)
                 this.$mediasWrapper.appendChild(
                     template.createMediaPage()
                 )
@@ -83,14 +79,14 @@ class AppMedia {
     }  
     
     // Afficher le banner du prix journalier
-    async displayPrice(mediasData) {
+    async displayFooter(mediasData) {
         const mediasModel = mediasData.map(media => new MediaFactory (media, 'Media', this.$photographer))
 
         mediasModel
             .forEach(mediasModel => {
-                const template = new PriceCard(mediasModel)
+                const template = new FooterCard(mediasModel)
                 this.$mediasWrapper.appendChild(
-                    template.createPriceCard()
+                    template.createFooterCard()
                 )
             })
     }

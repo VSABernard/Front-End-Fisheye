@@ -40,6 +40,8 @@ function logKey(event) {
     }
 }
 
+
+
 // ======================================================================================================
 // La VALIDATION des champs de la modale
 // La function globale qui montre le SUCCES MESSAGE et l'ERROR MESSAGE 
@@ -115,23 +117,44 @@ function validateMsg (message) {
 
 // Bloquer le formulaire après la vérification de tous les champs
 
-const first = document.getElementById('first')
-const last = document.getElementById('last')
-const email = document.getElementById('email')
-const msg = document.getElementById('msg')
+function validate() {
+    const first = document.getElementById('first')
+    const last = document.getElementById('last')
+    const email = document.getElementById('email')
+    const msg = document.getElementById('msg')
+
+    const TOTAL_VALID_FIELD = 3
+
+    let numberValidFields = 0
+
+    if (validateFirstName (first) == true) {
+        numberValidFields++
+    }
+    if (validateLastName (last) == true) {
+        numberValidFields++
+    }
+    if (validateEmail (email) == true) {
+        numberValidFields++
+    }
+    if (validateMsg (msg) == true) {
+        numberValidFields++
+    }
+    return numberValidFields == TOTAL_VALID_FIELD
+}
 
 form.addEventListener('submit', submitForm)
 
 function submitForm(event) {
-    event.preventDefault()                                                   // si l'événement n'est pas géré explicitement, l'action par défaut ne doit pas être exécutée comme elle l'est normalement
+    event.preventDefault()                                  // si l'événement n'est pas géré explicitement, l'action par défaut ne doit pas être exécutée comme elle l'est normalement
+    validate()                                          
     
     if (document.querySelectorAll('[data-error-visible=true]').length == 0) {
         
         console.info('DONNEES DE L\'UTILISATEUR : ')                        // console.info pour imprimer les données de l'utilisateur
-        console.info('Prénom : ' + first.value)                               
-        console.info('Nom : ' + last.value)
-        console.info('Email : ' + email.value)
-        console.info('Message : ' + msg.value)
+        console.info('Prénom : ' + this.first.value)                               
+        console.info('Nom : ' + this.last.value)
+        console.info('Email : ' + this.email.value)
+        console.info('Message : ' + this.msg.value)
         
         modal.style.display = 'none'
         form.reset()                                                         // vider chaque champ et le formulaire devient totalement vide.

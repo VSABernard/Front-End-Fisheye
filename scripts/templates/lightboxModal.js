@@ -1,4 +1,5 @@
 // SOLUTION AVEC DECORATOR PATTERN
+
 class LightboxModal {
     constructor(currentMedia, allMedias, index) {
         this._media = currentMedia
@@ -13,7 +14,7 @@ class LightboxModal {
         this.$modalWrapper = document.querySelector('.lightbox-modal')
     }
 
-    // Créer unefênetre de lightbox 
+    // Créer une fênetre de lightbox 
     createLightbox() {
 
         console.log('createLightBox media: ' + JSON.stringify(this._media))
@@ -58,8 +59,7 @@ class LightboxModal {
                 <button class="close-iframe" type="button" name="btn-close-iframe" aria-label="Fermer le lightbox" title="Fermer cette fenêtre lightbox" data-dismiss="dialog">
                     X
                 </button>
-            </section>
-        `
+            </section>  `
 
         this.$wrapper.innerHTML = lightboxMedia
         this.$modalWrapper.classList.add('modal-on')
@@ -67,7 +67,7 @@ class LightboxModal {
         this.onCloseLightbox()
         this.onPreviousMedia()
         this.onNextMedia()
-        this.onKeydown()
+        // this.onKeydown()
         this.$modalWrapper.focus()
     }
 
@@ -75,19 +75,29 @@ class LightboxModal {
     // Fermeture avec le bouton "X" et la touche "Echap"
     onCloseLightbox() {
         const closeButton = this.$wrapper.querySelector('.close-iframe')
-
+        
         // Fermer le lightbox avec le bouton "X"
         closeButton
             .addEventListener('click', () => {
                 this.closeLightbox()
             })
     }
+    
+    closeEspace() {
+        const closeLightbox = document.querySelector('.lightbox-modal')
+        closeLightbox.addEventListener('keydown', logKey)
 
-    closeLightbox() {
+        function logKey(event) {
+            if ('Escape' === event.code) {
+                closeLightbox()       
+            }
+        }
+    }
+
+    closeLightbox = () => {
         this.$modalWrapper.classList.remove('modal-on')
         this.$wrapper.classList.remove('background-lightbox')
         this.$wrapper.innerHTML = ''
-        
     }
 
     // Faire défiler le contenu du lightbox vers gauche
@@ -103,9 +113,9 @@ class LightboxModal {
 
     showPreviousMedia() {
         console.log('showPreviousMedia')
-        if(this._index == 0) {
-            return
-        }
+        // if(this._index == 0) {
+        //     return
+        // }
         this._index-- 
         this._media = this._allMedias[this._index]
         console.log('Title image precedente :' + this._media.title)

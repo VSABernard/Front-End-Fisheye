@@ -92,7 +92,7 @@ picture img {
     justify-content: space-between;
     align-content: center;
     height: max-content;
-    width: auto;
+    width: 100%;
     margin: 0;
     object-fit: cover;
     position: relative;
@@ -103,7 +103,7 @@ picture img {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 10px;
+    gap: 5px;
     width: 100%;
     object-fit: fill;
     object-position: 50% 50%;
@@ -111,28 +111,47 @@ picture img {
     border-radius: 5px;
 } 
 
-.medias-photographer h5 {
+.media-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+
+h5, h6, #button-likes {
     color: #D3573C;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 600;  
     margin-top: 15px;  
     height: auto;
 }
 
+h5 {
+    display: flex;
+    flex: 1;
+}
+
 .media-photo, .media-video {
     display: flex;
     position: relative;
-    width: 400px;
-    height: auto;
-    aspect-ratio: 3 / 2.5; 
+    width: 420px;
+    height: 100%;
+    max-height: 800px;
+    aspect-ratio: 3.25 / 2.5; 
+    margin: auto;
     border-radius: 10px; 
     object-fit: cover;
-    object-position: 50% 40%;
+    object-position: 50% 30%;
     cursor: pointer; 
 }
 
 .media-photo img {
-    height: 50%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: auto;
+    max-height: 1200px;
     width: 70%;
     border-radius: 5px;
     object-fit: cover;
@@ -142,7 +161,7 @@ picture img {
     object-fit: cover;
 }
 
-.banner-price {
+footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -159,7 +178,7 @@ picture img {
     z-index: 100;
 }
 
-.banner-price p {
+footer p, footer span {
     font-size: 20px;
     font-weight: 800;
     text-align: right;

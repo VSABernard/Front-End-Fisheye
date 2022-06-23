@@ -7,6 +7,7 @@
     <title>Fisheye - photographe </title>
     <link rel="icon" type="image/png" href="assets/images/icon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8c94c4429b.js" crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />   
     <link href="css/normalize.css" rel="stylesheet" type="text/css" />
@@ -20,7 +21,7 @@
 
     <main id="main" role="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="modal-button" type="button" aria-haspopup="dialog" aria-controls="dialog">Contactez-moi</button>
+        <button class="modal-button" type="button" aria-haspopup="dialog" aria-controls="dialog" tabindex="4">Contactez-moi</button>
       </div>
       <section class="medias-content"></section>
     </main>
@@ -42,12 +43,12 @@
         </button>
                  
         <form name="reserve" id="form" method="post" action="photographer.html" aria-label="Champs du formulaire">  
-          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caractères">
+          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez indiquer votre prénom">
             <label for="first" aria-label="Votre prénom">Prénom</label>
             <input class="text-control" type="text" id="first" name="first"/><br>                  
           </div>
     
-          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez entrer au moins 2 caractères">
+          <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez indiquer votre nom">
             <label for="last" aria-label="Votre nom">Nom</label>
             <input class="text-control" type="text" id="last" name="last"/><br>
           </div>
