@@ -113,10 +113,10 @@ class LightboxModal {
 
     showPreviousMedia() {
         console.log('showPreviousMedia')
-        // if(this._index == 0) {
-        //     return
-        // }
-        this._index-- 
+        if(this._index === 0) {
+            this._index = this._allMedias.length                    // Le défilement du tableau revient au dernière media
+        }
+        this._index -- 
         this._media = this._allMedias[this._index]
         console.log('Title image precedente :' + this._media.title)
         // Remise à 0 la fênetre de la lightbox avant d'afficher le media précedent
@@ -137,10 +137,10 @@ class LightboxModal {
     
     showNextMedia() {
         console.log('showNextMedia')
-        if(this._index == (this._allMedias.length-1)) {
-            return
+        if(this._index === (this._allMedias.length - 1)) {
+            this._index = - 1                                       // Le défilement du tableau continue au première media
         }
-        this._index++
+        this._index ++
         this._media = this._allMedias[this._index]
         console.log('Title image suivante :' + this._media.title)
         // Remise à 0 la fênetre de la lightbox avant d'afficher le media suivant

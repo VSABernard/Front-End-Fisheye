@@ -16,24 +16,27 @@ class MediasCard {
          <section class="medias-photographer" role="dialog" aria-labelledby="dialog-image" 
             aria-describedby="dialog-image" aria-modal="true" aria-hidden="true"> 
             `
-
         if (this._media.image != undefined) {
             mediaCard += `
-                    <img class="media-photo" aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}" tabindex="9">  
+                    <img class="media-photo" id="${this._media.id}"  aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}" tabindex="9">  
                     <article class="media-details">
                         <h5 tabindex="10" >${this._media.title}</h5>   
                         <h6 tabindex="11">${this._media.likes} </h6>  
-                        <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
+                        <button class="heart" type="button" aria-haspopup="dialog" aria-controls="dialog">
+                            <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
+                        </button>
                     </article> `  }
         else {
             mediaCard += `
-                    <video class="media-video" aria-modal="true" aria-hidden="true">
+                    <video class="media-video" id="${this._media.id}" aria-modal="true" aria-hidden="true">
                         <source src='${this._media.video}' type="video/mp4" alt="${this._media.title}" tabindex="9">
                     </video>   
                     <article class="media-details">
                         <h5 tabindex="10">${this._media.title}</h5>   
                         <h6 tabindex="11">${this._media.likes} </h6>  
-                        <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
+                        <button class="heart" type="button" aria-haspopup="dialog" aria-controls="dialog">
+                            <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
+                        </button>
                     </article> ` }
         mediaCard += `
                 </section> `

@@ -1,5 +1,6 @@
 class MediaModel {
-    constructor(data, photographer) {             
+    constructor(data, photographer) {  
+        this._id = data.id            
         this._title = data.title
         this._image = data.image
         this._video = data.video  
@@ -7,6 +8,10 @@ class MediaModel {
         this._date = data.date 
         this._price = data.price
         this._photographer = photographer
+    }
+
+    get id() {
+        return this._id
     }
 
     get title() {

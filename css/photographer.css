@@ -119,17 +119,22 @@ picture img {
     gap: 5px;
 }
 
-h5, h6, #button-likes {
+h5, h6, .heart {
     color: #D3573C;
     font-size: 24px;
     font-weight: 600;  
     margin-top: 15px;  
-    height: auto;
+    height: 25px;
 }
 
 h5 {
     display: flex;
     flex: 1;
+}
+
+.heart{
+    border: none;
+    background-color: transparent;
 }
 
 .media-photo, .media-video {

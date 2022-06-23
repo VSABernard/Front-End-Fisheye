@@ -4,7 +4,8 @@ import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
 import { FooterCard } from '../templates/mediaCard.js'
 import { MediasCard } from '../templates/mediaCard.js'
-import { mediaCardWithLightbox } from '../decorators/lightBox.js'
+//import { mediaCardWithLightbox } from '../decorators/lightBox.js'
+import {LightboxModal} from '../templates/lightboxModal.js' 
 
 //Mettre le code JavaScript lié à la page photographer.html
 
@@ -71,14 +72,22 @@ class AppMedia {
 
         mediasModel
             .forEach((mediaModel, index) => {
-                const template = mediaCardWithLightbox(new MediasCard(mediaModel), mediasModel, index)
+                const template = new MediasCard(mediaModel)
                 this.$mediasWrapper.appendChild(
                     template.createMediaPage()
                 )
+
+                const media = document.getElementById(mediaModel.id)     //Afficher chaque media selon son id
+
+                media.addEventListener('click', () => {   
+                    console.log('click to open the lightbox!')
+                    const lightboxMedia = new LightboxModal(template._media, mediasModel, index)
+                    lightboxMedia.render()
+                })  
             })        
     }  
     
-    // Afficher le banner du prix journalier
+    // Afficher le banner du footer
     async displayFooter(mediasData) {
         const mediasModel = mediasData.map(media => new MediaFactory (media, 'Media', this.$photographer))
 
