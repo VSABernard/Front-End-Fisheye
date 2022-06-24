@@ -1,5 +1,3 @@
-// SOLUTION AVEC DECORATOR PATTERN
-
 class LightboxModal {
     constructor(currentMedia, allMedias, index) {
         this._media = currentMedia

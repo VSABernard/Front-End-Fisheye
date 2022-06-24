@@ -119,22 +119,48 @@ picture img {
     gap: 5px;
 }
 
-h5, h6, .heart {
+h5,input[value], #heart {
     color: #D3573C;
     font-size: 24px;
     font-weight: 600;  
-    margin-top: 15px;  
     height: 25px;
 }
 
 h5 {
     display: flex;
     flex: 1;
+    margin-top: 0;
 }
 
-.heart{
+input[value] {
+    width: 35px;
+}
+
+/* Effacer les flèches l'input number pour Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+
+/* Effacer les flèches l'input number pour Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input, #heart{
     border: none;
     background-color: transparent;
+}
+
+#heart {
+    cursor: pointer;
+
+}
+
+#button-likes:active {
+    color:#710404;
+    transform: scale(1.2);
 }
 
 .media-photo, .media-video {

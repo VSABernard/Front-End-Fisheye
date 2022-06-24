@@ -83,7 +83,27 @@ class AppMedia {
                     console.log('click to open the lightbox!')
                     const lightboxMedia = new LightboxModal(template._media, mediasModel, index)
                     lightboxMedia.render()
-                })  
+                }) 
+                
+                // L'incrémentation et décrementation du bouton 'LIKE'
+                // dataLike : le numbre de likes dans le JSon
+                // currentLike : le numbre de like qui augmente ou descend après chaque "click"
+
+                let button = document.getElementById('heart-'+mediaModel.id)
+                let likeField = document.querySelector('#heart-'+mediaModel.id + ' span')
+                const dataLike = parseInt(mediaModel.likes)
+                
+                button.addEventListener('click',() => { 
+                    let currentLike = parseInt(likeField.innerHTML)                    
+
+                    if (dataLike === currentLike) {
+                        currentLike += 1 
+                    } else {
+                        currentLike -= 1                       
+                    } 
+                    likeField.innerHTML = '' + currentLike
+                    console.log('click on like :' + currentLike)
+                })
             })        
     }  
     

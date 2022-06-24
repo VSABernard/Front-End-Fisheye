@@ -20,9 +20,9 @@ class MediasCard {
             mediaCard += `
                     <img class="media-photo" id="${this._media.id}"  aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}" tabindex="9">  
                     <article class="media-details">
-                        <h5 tabindex="10" >${this._media.title}</h5>   
-                        <h6 tabindex="11">${this._media.likes} </h6>  
-                        <button class="heart" type="button" aria-haspopup="dialog" aria-controls="dialog">
+                        <h5 tabindex="10" >${this._media.title}</h5>                                                     
+                        <button id="heart-${this._media.id}">   
+                            <span class="input-like" tabindex="11">${this._media.likes}</span>
                             <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
                         </button>
                     </article> `  }
@@ -33,8 +33,8 @@ class MediasCard {
                     </video>   
                     <article class="media-details">
                         <h5 tabindex="10">${this._media.title}</h5>   
-                        <h6 tabindex="11">${this._media.likes} </h6>  
-                        <button class="heart" type="button" aria-haspopup="dialog" aria-controls="dialog">
+                        <button id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog">
+                            <span class="input-like" tabindex="11">${this._media.likes}</span>
                             <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
                         </button>
                     </article> ` }
