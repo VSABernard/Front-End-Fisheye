@@ -20,11 +20,13 @@ class MediasCard {
             mediaCard += `
                     <img class="media-photo" id="${this._media.id}"  aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}" tabindex="9">  
                     <article class="media-details">
-                        <h5 tabindex="10" >${this._media.title}</h5>                                                     
-                        <button id="heart-${this._media.id}">   
-                            <span class="input-like" tabindex="11">${this._media.likes}</span>
-                            <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
-                        </button>
+                        <h5 tabindex="10" >${this._media.title}</h5>    
+                        <input class="number-likes" aria-label="Number of likes">
+                            <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}" tabindex="11">${this._media.likes}</span>
+                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog" on>
+                                <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
+                            </button>
+                        </input>
                     </article> `  }
         else {
             mediaCard += `
@@ -33,10 +35,12 @@ class MediasCard {
                     </video>   
                     <article class="media-details">
                         <h5 tabindex="10">${this._media.title}</h5>   
-                        <button id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog">
-                            <span class="input-like" tabindex="11">${this._media.likes}</span>
-                            <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
-                        </button>
+                        <input class="number-likes" aria-label="Number of likes">
+                            <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}" tabindex="11">${this._media.likes}</span>
+                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog" on>
+                                <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
+                            </button>
+                        </input>
                     </article> ` }
         mediaCard += `
                 </section> `
@@ -58,7 +62,7 @@ class FooterCard {
         const footer = `
         <footer class="footer" aria-label="Banner of likes and daily rate" tabindex="6">
             <section class="likes" aria-label="Total number of likes">
-                <span aria-label="Number of ${this._media.likes} likes">${this._media.likes}</span>
+                <span id="total-likes" aria-label="Number of ${this._media.likes} likes">${this._media.likes}</span>
                 <i class="fa-solid fa-heart" id="footer-likes" aria-label="Button like"></i>
             </section>
             <p class="price" aria-label="Daily rate of the photographer">${this._user.price}</p>

@@ -4,7 +4,6 @@ import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
 import { FooterCard } from '../templates/mediaCard.js'
 import { MediasCard } from '../templates/mediaCard.js'
-//import { mediaCardWithLightbox } from '../decorators/lightBox.js'
 import {LightboxModal} from '../templates/lightboxModal.js' 
 
 //Mettre le code JavaScript lié à la page photographer.html
@@ -22,6 +21,7 @@ class AppMedia {
         this.$mediasWrapper = document.querySelector('.medias-content')
         this.$photographer = {}
         this.$photographerName = document.querySelector('#photographer-name')
+        this.$sumLikes = 0
     }
     async init() {
         // Récupère les medias des photographes
@@ -37,6 +37,10 @@ class AppMedia {
 
         // Affichage du footer du photographe   
         this.displayFooter(photographerData)
+
+        // Affichege des likes total
+        this.displayTotalLikes()
+       
     }
     
     // Afficher les détails du photographe
@@ -86,26 +90,37 @@ class AppMedia {
                 }) 
                 
                 // L'incrémentation et décrementation du bouton 'LIKE'
-                // dataLike : le numbre de likes dans le JSon
-                // currentLike : le numbre de like qui augmente ou descend après chaque "click"
-
-                let button = document.getElementById('heart-'+mediaModel.id)
-                let likeField = document.querySelector('#heart-'+mediaModel.id + ' span')
-                const dataLike = parseInt(mediaModel.likes)
+                // dataLike : le nombre de likes dans le JSon
+                // currentLike : le nombre de like qui augmente ou descend après chaque "click"
+                // sumLikes : le nombre des likes totals
                 
-                button.addEventListener('click',() => { 
-                    let currentLike = parseInt(likeField.innerHTML)                    
+                let button = document.getElementById('heart-'+ mediaModel.id)
+                let likeField = document.querySelector('#like-'+ mediaModel.id)
+                let currentLike = parseInt(likeField.innerHTML) 
+                const dataLike = parseInt(mediaModel.likes)
 
+                this.$sumLikes += dataLike
+
+                button.addEventListener('click',() => { 
                     if (dataLike === currentLike) {
                         currentLike += 1 
+                        this.$sumLikes += 1                                 // Le nombre de total likes dans footer
                     } else {
-                        currentLike -= 1                       
+                        currentLike -= 1    
+                        this.$sumLikes -= 1                                 // Le nombre de total likes dans footer
                     } 
                     likeField.innerHTML = '' + currentLike
                     console.log('click on like :' + currentLike)
+                    this.displayTotalLikes()                                // Mettre à jour l'affichage des likes
                 })
-            })        
+            })
     }  
+
+    // Aficher le nombre total des likes au footer
+    async displayTotalLikes() {
+        let totalLikes = document.getElementById('total-likes')
+        totalLikes.innerHTML = this.$sumLikes + ''
+    }
     
     // Afficher le banner du footer
     async displayFooter(mediasData) {

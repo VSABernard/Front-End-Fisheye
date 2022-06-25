@@ -7,14 +7,12 @@ html {
     min-height: 100vh; 
   }
   
-
 body { 
     width: auto;
     font-family: "DM Sans", sans-serif;
     max-width: 1440px;
     margin: auto;
 }
-
 
 header {
     display: flex;
@@ -42,6 +40,10 @@ h1 {
     justify-content: flex-start;
     height: 50px;
     min-width: fit-content;
+}
+
+.logo:hover, .photographer:hover {
+    transform: scale(1.1)
 }
 
 .photographer_section {
