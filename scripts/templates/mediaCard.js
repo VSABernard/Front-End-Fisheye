@@ -50,6 +50,34 @@ class MediasCard {
     }  
 }
 
+class FilterCard {
+    constructor() {
+        this.$filter = document.createElement('form')
+    }
+
+    createFilterCard() {
+        
+        this.$filter.classList.add('form-block')
+        this.$filter.setAttribute('aria-labelledby', 'media-container')
+        this.$filter.setAttribute('aria-hidden', 'false')
+
+        const filterBlock = `
+            <form class="filter-form" id="filter-block" action="#" method="POST">
+                <label for="filter-select" class="filter-label">Trier par </label>
+                <select class="form-select" name="choice" id="tri">         
+                    <option class="form-options" value="">-- Filtres --</option>
+                    <option class="form-options" value="popularite">Popularité</option>          
+                    <option class="form-options" value="date">Date</option>          
+                    <option class="form-options" value="titre">Titre</option>          
+                </select>
+            </form>
+            `
+        
+        this.$filter.innerHTML = filterBlock
+        return this.$filter
+    }
+}
+
 class FooterCard {
     constructor(currentMedia) {
         this._user = currentMedia  
@@ -73,4 +101,5 @@ class FooterCard {
 }
 
 export { MediasCard }
+export { FilterCard }
 export { FooterCard }

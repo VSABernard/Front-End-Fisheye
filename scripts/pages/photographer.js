@@ -2,8 +2,9 @@ import { PhotographerFactory } from '../factories/photographerFactory.js'
 import { MediaFactory } from '../factories/mediaFactory.js'
 import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
-import { FooterCard } from '../templates/mediaCard.js'
 import { MediasCard } from '../templates/mediaCard.js'
+import { FilterCard } from '../templates/mediaCard.js'
+import { FooterCard } from '../templates/mediaCard.js'
 import {LightboxModal} from '../templates/lightboxModal.js' 
 
 //Mettre le code JavaScript lié à la page photographer.html
@@ -22,6 +23,7 @@ class AppMedia {
         this.$photographer = {}
         this.$photographerName = document.querySelector('#photographer-name')
         this.$sumLikes = 0
+        this.$mediasData
     }
     async init() {
         // Récupère les medias des photographes
@@ -31,16 +33,18 @@ class AppMedia {
         this.displayPhotographer(photographerData)
 
         // Affichage des medias du photographe
-        const mediasData = await this.api.getMediasByPhotographer(idPhotographer)
-        console.log ('mediasData : '+ mediasData )
-        this.displayMedias(mediasData)
+        this.$mediasData = await this.api.getMediasByPhotographer(idPhotographer)
+        console.log ('mediasData : '+ this.$mediasData )
+        this.displayMedias(this.$mediasData)
+
+        // Affichage du filtre du photographe   
+        this.displayFormFilter()
 
         // Affichage du footer du photographe   
         this.displayFooter(photographerData)
 
         // Affichege des likes total
-        this.displayTotalLikes()
-       
+        this.displayTotalLikes()       
     }
     
     // Afficher les détails du photographe
@@ -62,7 +66,6 @@ class AppMedia {
             })
 
         this.$photographerName.innerHTML = this.$photographer.name       
-
     }   
 
     // Afficher la liste de l'album photos et vidéo du photographe
@@ -121,18 +124,22 @@ class AppMedia {
         let totalLikes = document.getElementById('total-likes')
         totalLikes.innerHTML = this.$sumLikes + ''
     }
-    
+
+    // Afficher le banner du filter
+    async displayFormFilter() {        
+        const template = new FilterCard()
+        this.$mediasWrapper.appendChild(
+            template.createFilterCard()
+        )
+    }
+        
     // Afficher le banner du footer
     async displayFooter(mediasData) {
         const mediasModel = mediasData.map(media => new MediaFactory (media, 'Media', this.$photographer))
-
-        mediasModel
-            .forEach(mediasModel => {
-                const template = new FooterCard(mediasModel)
-                this.$mediasWrapper.appendChild(
-                    template.createFooterCard()
-                )
-            })
+        const template = new FooterCard(mediasModel[0])
+        this.$mediasWrapper.appendChild(
+            template.createFooterCard()
+        )
     }
 }
 

@@ -68,6 +68,7 @@ class Api {
         const media = medias.filter(media => media.photographerId === idPhotographer)
         return media
     }
+
 }
 
 export { Api }
