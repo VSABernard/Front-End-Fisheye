@@ -3,6 +3,7 @@
 class MediasCard {
     constructor(currentMedia) {
         this._media = currentMedia 
+        this.$filter = document.createElement('form')
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('medias-list')
     }
@@ -57,22 +58,25 @@ class FilterCard {
 
     createFilterCard() {
         
-        this.$filter.classList.add('form-block')
+        this.$filter.classList.add('filter-block')
         this.$filter.setAttribute('aria-labelledby', 'media-container')
+        this.$filter.setAttribute('aria-haspopup', 'listbox')
+        this.$filter.setAttribute('role', 'listbox')
         this.$filter.setAttribute('aria-hidden', 'false')
+        this.$filter.setAttribute('aria-expanded', 'true')
 
         const filterBlock = `
             <form class="filter-form" id="filter-block" action="#" method="POST">
-                <label for="filter-select" class="filter-label">Trier par </label>
-                <select class="form-select" name="choice" id="tri">         
-                    <option class="form-options" value="">-- Filtres --</option>
-                    <option class="form-options" value="popularite">Popularité</option>          
-                    <option class="form-options" value="date">Date</option>          
-                    <option class="form-options" value="titre">Titre</option>          
+                <label for="filter-select" class="filter-label" tabindex="7">Trier par </label>
+                <select id="form-select" name="choice" id="tri" tabindex="8">         
+                    <option class="form-options" id="option-0" value="">-- Filtres --</option>
+                    <option class="form-options" id="selected" value="popularity">Popularité</option>          
+                    <option class="form-options" id="option-2" value="date">Date</option>          
+                    <option class="form-options" id="option-3" value="title">Titre</option>          
                 </select>
             </form>
             `
-        
+
         this.$filter.innerHTML = filterBlock
         return this.$filter
     }

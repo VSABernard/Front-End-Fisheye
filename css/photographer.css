@@ -9,13 +9,23 @@ body {
     font-family: "DM Sans", sans-serif;
 }
 
+#main {
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+}
+
+
 .photograph-header {
     position: relative;
+    margin-right: 50px;
+    width: 100%;
 }
 
 .content-wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     width: 100%;
     margin: auto;
 }
@@ -29,7 +39,7 @@ body {
     height: 230px;
     width: 100%;
     padding: 0 30px;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
 }
 
 .info {
@@ -89,20 +99,72 @@ picture img {
     border-radius: 180px;
 }
 
+.medias-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    column-gap: 50px;
+    margin-top: 40px;
+}
+
+/* FILTRES */
+
+.filter-content {
+    height: 70px;
+    margin-bottom: 30px;
+}
+
+.filter-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: absolute;
+    margin: auto;
+}
+
+.filter-label {
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 30px;
+}
+
+#form-select {
+    border: transparent;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #901C1C;
+    color: #FAFAFA;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    padding: 5px;
+}
+
+#form-select option  {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#option-0:checked {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* LISTE DES MEDIAS */ 
+
 .medias-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: center;
+    justify-content: stretch;
     height: max-content;
-    column-gap: 60px;
+    column-gap: 24px;
     width: 100%;
-    margin: 0;
+    margin: auto;
     object-fit: cover;
     position: relative;
     z-index: 0;
-}
+} 
 
 .medias-photographer {
     display: flex;
@@ -162,7 +224,7 @@ h5 {
 .media-photo, .media-video {
     display: flex;
     position: relative;
-    width: 420px;
+    width: 450px;
     height: 100%;
     max-height: 800px;
     aspect-ratio: 3.25 / 2.5; 
@@ -188,13 +250,21 @@ h5 {
     object-fit: cover;
 }
 
+/* FOOTER - PRIX JOURNALIER + LIKES TOTAL*/
+
+.banner-footer {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1440px;
+}
+
 footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: fixed;
     background-color: #db8876;
-    margin: auto;
+    margin: 0;
     bottom: 0;
     right: 30px;
     width: 376px;
@@ -291,7 +361,7 @@ form {
     margin-top: 20px;
 }
 
-form label {
+.label-contact {
     color: #312E2E;
     font-size: 28px;
     font-weight: 600;

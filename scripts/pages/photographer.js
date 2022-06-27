@@ -18,6 +18,8 @@ console.log('id photographer :' + idPhotographer)
 class AppMedia {
     constructor() {
         this.api = new Api('./data/photographers.json') 
+        this.$mainWrapper = document.querySelector('#main')
+        this.$filterWrapper = document.querySelector('.filter-content')
         this.$photographersWrapper = document.querySelector('.photograph-header')
         this.$mediasWrapper = document.querySelector('.medias-content')
         this.$photographer = {}
@@ -34,7 +36,13 @@ class AppMedia {
 
         // Affichage des medias du photographe
         this.$mediasData = await this.api.getMediasByPhotographer(idPhotographer)
-        console.log ('mediasData : '+ this.$mediasData )
+        console.log ('*********************************')
+        console.log ('mediasData : ' )
+        console.table(this.$mediasData)
+        console.log ('mediasData after comparator : ' )
+        console.table(this.$mediasData)
+        console.log ('*********************************')
+
         this.displayMedias(this.$mediasData)
 
         // Affichage du filtre du photographe   
@@ -70,6 +78,8 @@ class AppMedia {
 
     // Afficher la liste de l'album photos et vidéo du photographe
     async displayMedias(mediasData) {
+        this.$mediasWrapper.replaceChildren()                               // Enlever le contenu avant d'afficher un nouveau contenu
+
         console.log ('mediasData :' + mediasData)
         console.table (mediasData)    
         
@@ -128,16 +138,59 @@ class AppMedia {
     // Afficher le banner du filter
     async displayFormFilter() {        
         const template = new FilterCard()
-        this.$mediasWrapper.appendChild(
+        this.$filterWrapper.appendChild(
             template.createFilterCard()
         )
+
+        let select = document.getElementById('form-select')
+        select.addEventListener('change', (evt) => {   
+            let choice = evt.target.value                           // value = la valeur de l'option selectionnée (titre, date, popularity)              
+            console.log('selection made : ' + choice)
+            
+            
+            // Les functions de comparaison qui permet de trier 
+            const comparatorTitle = (a,b) => {
+                return a.title.localeCompare(b.title)
+            }
+            const comparatorDate = (a,b) => {
+                return a.date.localeCompare(b.date)
+            }
+            const comparatorLike = (a,b) => {
+                return b.likes - a.likes
+            }
+
+            // Les conditions de tri
+            // if ('title' == choice) {
+            //     this.$mediasData.sort(comparatorTitle)
+            // }
+            // if ('date' == choice) {
+            //     this.$mediasData.sort(comparatorDate)
+            // }
+            // if ('popularity' == choice) {
+            //     this.$mediasData.sort(comparatorLike)
+            // }
+
+            // 
+            switch(choice) {
+            case 'title' : this.$mediasData.sort(comparatorTitle)
+                break
+            case 'date' : this.$mediasData.sort(comparatorDate)
+                break  
+            case 'popularity' : this.$mediasData.sort(comparatorLike)
+                break 
+            default : this.$mediasData.sort(comparatorLike)
+                break              
+            }
+            
+            this.displayMedias(this.$mediasData)
+        })
     }
         
     // Afficher le banner du footer
     async displayFooter(mediasData) {
         const mediasModel = mediasData.map(media => new MediaFactory (media, 'Media', this.$photographer))
         const template = new FooterCard(mediasModel[0])
-        this.$mediasWrapper.appendChild(
+        this.$mainWrapper.appendChild(
             template.createFooterCard()
         )
     }
