@@ -79,6 +79,7 @@ class AppMedia {
     // Afficher la liste de l'album photos et vidéo du photographe
     async displayMedias(mediasData) {
         this.$mediasWrapper.replaceChildren()                               // Enlever le contenu avant d'afficher un nouveau contenu
+        this.$sumLikes = 0                                                  // Remettre à zéro le compteur des likes 
 
         console.log ('mediasData :' + mediasData)
         console.table (mediasData)    
@@ -142,7 +143,18 @@ class AppMedia {
             template.createFilterCard()
         )
 
+        
         let select = document.getElementById('form-select')
+        
+        select.addEventListener('click', () => {
+            let chevron = document.querySelector('#chevron')
+            console.log('chevron classlist before : ' + chevron.classList)
+            chevron.classList.toggle('active')
+            console.log('chevron classlist after : ' + chevron.classList)
+            console.log('chevron click')
+        })
+        
+        
         select.addEventListener('change', (evt) => {   
             let choice = evt.target.value                           // value = la valeur de l'option selectionnée (titre, date, popularity)              
             console.log('selection made : ' + choice)
@@ -171,6 +183,7 @@ class AppMedia {
             // }
 
             // 
+            
             switch(choice) {
             case 'title' : this.$mediasData.sort(comparatorTitle)
                 break
@@ -183,7 +196,7 @@ class AppMedia {
             }
             
             this.displayMedias(this.$mediasData)
-        })
+        })        
     }
         
     // Afficher le banner du footer

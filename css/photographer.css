@@ -112,6 +112,7 @@ picture img {
 .filter-content {
     height: 70px;
     margin-bottom: 30px;
+    position: relative;
 }
 
 .filter-block {
@@ -128,7 +129,9 @@ picture img {
     margin-right: 30px;
 }
 
-#form-select {
+.block-form {
+    display: flex;
+    flex-direction: row;
     border: transparent;
     border-radius: 5px;
     width: 200px;
@@ -140,15 +143,63 @@ picture img {
     padding: 5px;
 }
 
-#form-select option  {
+.filters {
+    position: absolute;
+}
+
+#form-select {
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #901C1C;
+    color: #FAFAFA;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    padding: 5px;
+    transform: translateY(0);
+    transition: transform 0.2s;    
+}
+
+select {
+    appearance: none;
+}
+
+#form-select:active  {
+    border: transparent;
     font-size: 18px;
     font-weight: 500;
 }
 
-#option-0:checked {
-    font-size: 18px;
-    font-weight: 500;
+#selected {
+    nav-index: 1;
 }
+
+#option-1 {
+    nav-index: 2;
+}
+
+#option-2 {
+    nav-index: 3;
+}
+
+#option-3 {
+    nav-index: 4;
+}
+
+#chevron {
+    position: relative;
+    margin-left: -30px;
+    top: 5px;
+    color: #FAFAFA;
+    z-index: 100;
+}
+
+#chevron:active, #chevron.active {
+    top: -10px;
+    transform: rotate(180deg);
+}
+
 
 /* LISTE DES MEDIAS */ 
 

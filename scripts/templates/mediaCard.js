@@ -66,14 +66,15 @@ class FilterCard {
         this.$filter.setAttribute('aria-expanded', 'true')
 
         const filterBlock = `
-            <form class="filter-form" id="filter-block" action="#" method="POST">
+            <form class="filters" action="#" method="POST">
                 <label for="filter-select" class="filter-label" tabindex="7">Trier par </label>
-                <select id="form-select" name="choice" id="tri" tabindex="8">         
-                    <option class="form-options" id="option-0" value="">-- Filtres --</option>
-                    <option class="form-options" id="selected" value="popularity">Popularité</option>          
+                <select id="form-select" name="choice" id="tri" tabindex="8">   
+                    <option class="select-button" id="selected" value="">-- Filtres --</option>
+                    <option class="form-options" id="option-1" value="popularity">Popularité</option>          
                     <option class="form-options" id="option-2" value="date">Date</option>          
                     <option class="form-options" id="option-3" value="title">Titre</option>          
                 </select>
+                <i class="fa-solid fa-chevron-down" id="chevron"></i>
             </form>
             `
 
