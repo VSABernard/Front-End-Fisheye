@@ -2,9 +2,7 @@ import { PhotographerFactory } from '../factories/photographerFactory.js'
 import { MediaFactory } from '../factories/mediaFactory.js'
 import { Api } from '../api/Api.js'
 import { ContactCard } from '../templates/contactCard.js'
-import { MediasCard } from '../templates/mediaCard.js'
-import { FilterCard } from '../templates/mediaCard.js'
-import { FooterCard } from '../templates/mediaCard.js'
+import { MediasCard, FilterCard, FooterCard } from '../templates/mediaCard.js'
 import {LightboxModal} from '../templates/lightboxModal.js' 
 
 //Mettre le code JavaScript lié à la page photographer.html
@@ -25,7 +23,7 @@ class AppMedia {
         this.$photographer = {}
         this.$photographerName = document.querySelector('#photographer-name')
         this.$sumLikes = 0
-        this.$mediasData
+        this.$mediasData = null
     }
     async init() {
         // Récupère les medias des photographes
@@ -184,6 +182,7 @@ class AppMedia {
 
             // 
             
+
             switch(choice) {
             case 'title' : this.$mediasData.sort(comparatorTitle)
                 break

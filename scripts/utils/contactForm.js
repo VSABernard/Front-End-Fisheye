@@ -4,7 +4,8 @@
 const body = document.querySelector('#body')
 const openModalBtn = document.querySelector('.modal-button')
 const main = document.querySelector('#main')
-const modal = document.querySelector('.bground')
+const bground = document.querySelector('.bground')
+const modal = document.querySelector('.contact-modal')
 const form = document.querySelector('form')
 const modalCloseBtn = document.querySelector('.close-form')
  
@@ -13,6 +14,7 @@ const onOpenModal = () => {
     main.setAttribute('aria-hidden', 'true')
     modal.setAttribute('aria-hidden', 'false')
     body.classList.add('no-scroll')
+    bground.style.display = 'block'
     modal.style.display = 'flex'
     modalCloseBtn.focus()
 }
@@ -22,6 +24,7 @@ const onCloseModal = () => {
     modal.setAttribute('aria-hidden', 'true')
     body.classList.remove('no-scroll')
     modal.style.display = 'none'
+    bground.style.display = 'none'
     openModalBtn.focus()
 }
  
