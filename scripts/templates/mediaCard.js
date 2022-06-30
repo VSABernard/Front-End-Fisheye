@@ -3,7 +3,7 @@
 class MediasCard {
     constructor(currentMedia) {
         this._media = currentMedia 
-        this.$filter = document.createElement('form')
+        // this.$filter = document.createElement('form')
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('medias-list')
     }
@@ -66,12 +66,14 @@ class FilterCard {
         this.$filter.setAttribute('aria-expanded', 'true')
 
         const filterBlock = `
-            <form class="filters" action="#" method="POST">
-                <label for="filter-select" class="filter-label" tabindex="7">Trier par </label>
-                <select id="form-select" name="choice" id="tri" tabindex="8">  
-                    <option class="form-options" id="selected" value="popularity">Popularité</option>  
-                    <option class="form-options" id="option-1" value="date">Date</option>          
-                    <option class="form-options" id="option-2" value="title">Titre</option>          
+            <form class="filters">
+                <label for="filter-select" class="label" tabindex="7">Trier par</label>
+                <select id="form-select" name="choices" tabindex="8">
+                    <option class="filter-options" id="selected" value="popularity">Popularité</option> 
+                    <option disabled="disabled">──────────────</option>
+                    <option class="filter-options" id="option-1" value="date">Date</option>   
+                    <option disabled="disabled">──────────────</option>
+                    <option class="filter-options" id="option-2" value="title">Titre</option>
                 </select>
                 <i class="fa-solid fa-chevron-down" id="chevron"></i>
             </form>

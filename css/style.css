@@ -14,14 +14,21 @@ body {
     margin: auto;
 }
 
+#main {
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    position: absolute;
+}
+
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 90px;
-    margin: 50px 0;
-    gap: 200px;
+    margin: 50px 40px;
+    gap: 180px;
 }
 
 h1 {
@@ -49,9 +56,9 @@ h1 {
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 270px;
+    gap: 250px;
     row-gap: 50px;
-    margin: 100px 0;
+    margin: auto;
     width: 300px;
 }
 

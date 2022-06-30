@@ -82,7 +82,7 @@ function changeOnMsg (event) {
 
 // La function qui montre le message du succes et d'erreur de chaque champs
 function validateFirstName (first) {
-    if (checkName (first.value) == true) {                                      
+    if (checkName (first.value)) {                                      
         showSucces (first) 
         return true               
     } else {   
@@ -91,7 +91,7 @@ function validateFirstName (first) {
     }
 }
 function validateLastName (last) {
-    if (checkName (last.value) == true) {                                       
+    if (checkName (last.value)) {                                       
         showSucces (last)  
         return true          
     } else {   
@@ -100,7 +100,7 @@ function validateLastName (last) {
     }
 }
 function validateEmail (email) {
-    if (checkEmail (email) == true) {                                          
+    if (checkEmail (email)) {                                          
         showSucces (email)       
         return true
     } else {   
@@ -109,7 +109,7 @@ function validateEmail (email) {
     }
 }
 function validateMsg (message) {
-    if (checkMsg (message) == true) {                                          
+    if (checkMsg (message)) {                                          
         showSucces (message)       
         return true
     } else {   
@@ -130,16 +130,16 @@ function validate() {
 
     let numberValidFields = 0
 
-    if (validateFirstName (first) == true) {
+    if (validateFirstName (first)) {
         numberValidFields++
     }
-    if (validateLastName (last) == true) {
+    if (validateLastName (last)) {
         numberValidFields++
     }
-    if (validateEmail (email) == true) {
+    if (validateEmail (email)) {
         numberValidFields++
     }
-    if (validateMsg (msg) == true) {
+    if (validateMsg (msg)) {
         numberValidFields++
     }
     return numberValidFields == TOTAL_VALID_FIELD

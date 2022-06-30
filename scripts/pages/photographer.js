@@ -141,11 +141,18 @@ class AppMedia {
             template.createFilterCard()
         )
 
-        
         let select = document.getElementById('form-select')
-        
+        let chevron = document.querySelector('#chevron')
+
+        chevron.addEventListener('mousedown',function(){
+            console.log('chevron mousedown')
+            setTimeout(function(){
+                //select.dispatchEvent(evt)
+            })
+        })
+
         select.addEventListener('click', () => {
-            let chevron = document.querySelector('#chevron')
+            console.log('select click')
             console.log('chevron classlist before : ' + chevron.classList)
             chevron.classList.toggle('active')
             console.log('chevron classlist after : ' + chevron.classList)
