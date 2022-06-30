@@ -107,24 +107,29 @@ class AppMedia {
                 // sumLikes : le nombre des likes totals
                 
                 let button = document.getElementById('heart-'+ mediaModel.id)
-                let likeField = document.querySelector('#like-'+ mediaModel.id)
+                let likeField = document.querySelector('#like-'+ mediaModel.id)                
                 let currentLike = parseInt(likeField.innerHTML) 
                 const dataLike = parseInt(mediaModel.likes)
-
+                
                 this.$sumLikes += dataLike
 
-                button.addEventListener('click',() => { 
+                button.addEventListener('click', (event) => { 
                     if (dataLike === currentLike) {
                         currentLike += 1 
-                        this.$sumLikes += 1                                 // Le nombre de total likes dans footer
+                        event.target.style.color = '#901C1C'                // La couleur du coeur change après avoir été clicqué 1 fois
                     } else {
                         currentLike -= 1    
                         this.$sumLikes -= 1                                 // Le nombre de total likes dans footer
+                        event.target.style.color = '#D3573C'                // La couleur du coeur change après avoir été déclicqué 1 fois
                     } 
+
                     likeField.innerHTML = '' + currentLike
                     console.log('click on like :' + currentLike)
                     this.displayTotalLikes()                                // Mettre à jour l'affichage des likes
                 })
+                this.$sumLikes += 1                                 // Le nombre de total likes dans footer
+
+                
             })
     }  
 

@@ -117,7 +117,7 @@ picture img {
 .filter-content {
     height: 70px;
     width: 100%;
-    margin-right: auto;
+    margin-left: 10px;
     margin-bottom: 30px;
     position: relative;
 }
@@ -238,9 +238,10 @@ option[disabled] {
     flex-wrap: wrap;
     justify-content: stretch;
     height: max-content;
-    column-gap: 15px;
+    column-gap: 65px;
     width: 100%;
     margin: auto;
+    padding-left: 20px;
     object-fit: cover;
     position: relative;
     z-index: 0;
@@ -304,7 +305,7 @@ h5 {
 .media-photo, .media-video {
     display: flex;
     position: relative;
-    width: 450px;
+    width: 420px;
     height: 100%;
     max-height: 800px;
     aspect-ratio: 3.25 / 2.5; 
@@ -593,10 +594,6 @@ input[data-error]::after {
     border:none;
 }
 
-/* .lightbox-media-image[aria-hidden="true"], .lightbox-media-video[aria-hidden="true"] {
-    display: none;
-} */
-
 .lightbox-media-image, .lightbox-media-video {
     display: flex;
     flex-direction: column;
@@ -661,7 +658,7 @@ figcaption {
     text-align: right;
     font-size: 50px;
     font-weight: 700;
-    margin-top: 50px;
+    margin-top: -10px;
     margin-left: -50px;
     float: right;
 } 

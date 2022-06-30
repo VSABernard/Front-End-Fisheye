@@ -38,7 +38,7 @@ class MediasCard {
                         <h5 tabindex="10">${this._media.title}</h5>   
                         <input class="number-likes" aria-label="Number of likes">
                             <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}" tabindex="11">${this._media.likes}</span>
-                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog" on>
+                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog">
                                 <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
                             </button>
                         </input>
@@ -82,10 +82,6 @@ class FilterCard {
         this.$filter.innerHTML = filterBlock
         return this.$filter
     }
-
-
-
-
 }
 
 class FooterCard {
