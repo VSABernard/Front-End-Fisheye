@@ -53,13 +53,19 @@ h1 {
     transform: scale(1.1)
 }
 
+.photographer:hover {
+    border: 2px solid #D3573C;
+    border-radius: 10px;
+}
+
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 250px;
     row-gap: 50px;
     margin: auto;
-    width: 300px;
+    padding-bottom: 50px;
+    width: 100%;
 }
 
 .photographer_section article {

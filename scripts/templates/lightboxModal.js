@@ -3,10 +3,10 @@ class LightboxModal {
         this._media = currentMedia
         this._allMedias = allMedias
         this._index = index
-        console.log ('allMedias :')
-        console.table (allMedias)
-        console.log('current media : ' + currentMedia.title)
-        console.log ('index :' + index)
+        // console.log ('allMedias :')
+        // console.table (allMedias)
+        // console.log('current media : ' + currentMedia.title)
+        // console.log ('index :' + index)
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('background-lightbox')
         this.$modalWrapper = document.querySelector('.lightbox-modal')
@@ -63,9 +63,10 @@ class LightboxModal {
         this.$modalWrapper.classList.add('modal-on')
         this.$modalWrapper.appendChild(this.$wrapper)
         this.onCloseLightbox()
+        this.onCloseEscape()
         this.onPreviousMedia()
         this.onNextMedia()
-        // this.onKeydown()
+        this.onKeydown()
         this.$modalWrapper.focus()
     }
 
@@ -80,16 +81,14 @@ class LightboxModal {
                 this.closeLightbox()
             })
     }
-    
-    closeEspace() {
-        const closeLightbox = document.querySelector('.lightbox-modal')
-        closeLightbox.addEventListener('keydown', logKey)
-
-        function logKey(event) {
-            if ('Escape' === event.code) {
-                closeLightbox()       
+    // Fermer le lightbox avec "Esc"
+    onCloseEscape() {
+        const lightbox = document.querySelector('.lightbox-modal')
+        lightbox.addEventListener('keydown', (event) => {
+            if ('Escape' === event.key) {
+                this.closeLightbox()
             }
-        }
+        })     
     }
 
     closeLightbox = () => {
@@ -147,35 +146,22 @@ class LightboxModal {
     }
 
     // Gérer les événements avec le clavier
-    // onKeydown() {
-    //     window.addEventListener('keydown', (event) => {
-    //         if (event.defaultPrevented) {
-    //             return // Ne rien faire si l'événément est déjà déclanché 
-    //         }
-          
-    //         switch (event.key) {
-    //         case 'ArrowLeft':
-    //             // Faire quelque chose avec la touche "GAUCHE"
-    //             console.log('Touche gauche :')
-    //             this.showPreviousMedia()
-    //             break
-    //         case 'ArrowRight':
-    //             // Faire quelque chose avec la touche "DROIT"
-    //             console.log('Touche droit :')
-    //             this.showNextMedia()
-    //             break 
-    //         case 'Escape':
-    //             // Faire quelque chose avec la touche "ECHAP"
-    //             this.closeLightbox()  
-    //             break    
-    //         default:
-    //             return  // Quitter lorsque l'événement n'est pas reconnu
-    //         }
-          
-    //         // Annuler l'action par defaut pour eviter de le gérer en double
-    //         event.preventDefault() 
-    //     }, true)
-    // }
+    onKeydown() {
+        this.$modalWrapper.addEventListener('keydown',event => {
+            if(event.defaultPrevented) {
+                return
+            }
+            console.log('onKeyDown : ' +event.key)
+
+            switch (event.key) {
+            case 'ArrowLeft' : this.showPreviousMedia()
+                break
+            case 'ArrowRight' : this.showNextMedia()
+                break
+            }
+            event.preventDefault()
+        }, true)
+    }
 
     render() {
         this.createLightbox()

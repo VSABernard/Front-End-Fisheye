@@ -100,6 +100,19 @@ class AppMedia {
                     const lightboxMedia = new LightboxModal(template._media, mediasModel, index)
                     lightboxMedia.render()
                 }) 
+
+                // Ouverture la lightbox avec "Enter" après avoir navigué avec "Tab"
+                media.addEventListener('keydown',event => {
+                    if(event.defaultPrevented) {
+                        return
+                    }
+                    console.log('mediaKeyDown : ' +event.key)
+                    if (event.key === 'Enter') {
+                        const lightboxMedia = new LightboxModal(template._media, mediasModel, index)
+                        lightboxMedia.render()
+                    }
+                }, true)
+                                
                 
                 // L'incrémentation et décrementation du bouton 'LIKE'
                 // dataLike : le nombre de likes dans le JSon
@@ -114,8 +127,9 @@ class AppMedia {
                 this.$sumLikes += dataLike
 
                 button.addEventListener('click', (event) => { 
-                    if (dataLike === currentLike) {
+                    if (dataLike === currentLike)  {
                         currentLike += 1 
+                        this.$sumLikes += 1                                     // Le nombre de total likes dans footer
                         event.target.style.color = '#901C1C'                // La couleur du coeur change après avoir été clicqué 1 fois
                     } else {
                         currentLike -= 1    
@@ -127,9 +141,6 @@ class AppMedia {
                     console.log('click on like :' + currentLike)
                     this.displayTotalLikes()                                // Mettre à jour l'affichage des likes
                 })
-                this.$sumLikes += 1                                 // Le nombre de total likes dans footer
-
-                
             })
     }  
 
@@ -149,10 +160,12 @@ class AppMedia {
         let select = document.getElementById('form-select')
         let chevron = document.querySelector('#chevron')
 
-        chevron.addEventListener('mousedown',function(){
-            console.log('chevron mousedown')
+        chevron.addEventListener('keydown',function(event){
+            console.log('chevron keydown')
             setTimeout(function(){
-                //select.dispatchEvent(evt)
+                if(event.preventDefault){
+                    return
+                }
             })
         })
 
@@ -163,7 +176,6 @@ class AppMedia {
             console.log('chevron classlist after : ' + chevron.classList)
             console.log('chevron click')
         })
-        
         
         select.addEventListener('change', (evt) => {   
             let choice = evt.target.value                           // value = la valeur de l'option selectionnée (titre, date, popularity)              
