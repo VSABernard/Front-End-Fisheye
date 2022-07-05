@@ -4,7 +4,7 @@
   "description": "creer un site accessible pour une plateform de photographes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --max-warnings=0 ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/VSABernard/Front-End-Fisheye#readme",
   "devDependencies": {
-    "eslint": "^8.17.0"
+    "eslint": "^8.19.0"
   }
 }
