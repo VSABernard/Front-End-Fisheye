@@ -119,30 +119,51 @@ class AppMedia {
                 // currentLike : le nombre de like qui augmente ou descend après chaque "click"
                 // sumLikes : le nombre des likes totals
                 
-                let button = document.getElementById('heart-'+ mediaModel.id)
-                let likeField = document.querySelector('#like-'+ mediaModel.id)                
-                let currentLike = parseInt(likeField.innerHTML) 
+                let buttonLike = document.getElementById('heart-'+ mediaModel.id)
                 const dataLike = parseInt(mediaModel.likes)
                 
+
                 this.$sumLikes += dataLike
 
-                button.addEventListener('click', (event) => { 
-                    if (dataLike === currentLike)  {
-                        currentLike += 1 
-                        this.$sumLikes += 1                                     // Le nombre de total likes dans footer
-                        event.target.style.color = '#901C1C'                // La couleur du coeur change après avoir été clicqué 1 fois
-                    } else {
-                        currentLike -= 1    
-                        this.$sumLikes -= 1                                 // Le nombre de total likes dans footer
-                        event.target.style.color = '#D3573C'                // La couleur du coeur change après avoir été déclicqué 1 fois
-                    } 
-
-                    likeField.innerHTML = '' + currentLike
-                    console.log('click on like :' + currentLike)
-                    this.displayTotalLikes()                                // Mettre à jour l'affichage des likes
+                buttonLike.addEventListener('click', (event) => { 
+                    this.updateLikeButton(event, mediaModel, dataLike)                    
                 })
+
+                // Evénément "LIKE" géré avec "ENTER"
+                buttonLike.addEventListener('keydown', (event) => {
+                    if(event.defaultPrevented) {
+                        return
+                    }
+                    if (event.key === 'Enter') {
+                        this.updateLikeButton(event, mediaModel, dataLike) 
+                    }               
+                    event.preventDefault()
+                }, true)
             })
     }  
+
+    // La méthode globale pour l'incrémentation et décrementation du bouton 'LIKE'
+    updateLikeButton (event, mediaModel, dataLike) {
+        
+        let likeField = document.querySelector('#like-'+ mediaModel.id)                
+        let currentLike = parseInt(likeField.innerHTML) 
+        
+
+        if (dataLike === currentLike)  {
+            currentLike += 1 
+            this.$sumLikes += 1                                  // Le nombre de total likes dans footer
+            event.target.classList.add('liked')                             // La couleur du coeur change après avoir été clicqué 1 fois               
+
+        } else {
+            currentLike -= 1    
+            this.$sumLikes -= 1                                 // Le nombre de total likes dans footer
+            event.target.classList.remove('liked')                // La couleur du coeur change après avoir été déclicqué 1 fois
+        } 
+
+        likeField.innerHTML = '' + currentLike
+        console.log('click on like :' + currentLike)
+        this.displayTotalLikes()                                // Mettre à jour l'affichage des likes
+    }
 
     // Aficher le nombre total des likes au footer
     async displayTotalLikes() {
@@ -203,9 +224,6 @@ class AppMedia {
             // if ('popularity' == choice) {
             //     this.$mediasData.sort(comparatorLike)
             // }
-
-            // 
-            
 
             switch(choice) {
             case 'title' : this.$mediasData.sort(comparatorTitle)

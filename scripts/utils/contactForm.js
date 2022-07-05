@@ -34,7 +34,7 @@ openModalBtn.addEventListener('click', onOpenModal)
 // Fermer la modale avec "X"
 modalCloseBtn.addEventListener('click', onCloseModal)
  
-// Fermer la modale avec la touche Esc
+// Fermer la modale avec la touche "Esc"
 modal.addEventListener('keydown', logKey)
 
 function logKey(event) {
@@ -42,8 +42,6 @@ function logKey(event) {
         onCloseModal()        
     }
 }
-
-
 
 // ======================================================================================================
 // La VALIDATION des champs de la modale
