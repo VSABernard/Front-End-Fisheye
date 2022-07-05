@@ -22,7 +22,7 @@ class MediaModel {
         if (this._image === undefined) {
             return undefined
         }
-        return `/assets/images/photos/${this._photographer.firstName}/${this._image}`
+        return `assets/images/photos/${this._photographer.firstName}/${this._image}`
     }
 
     get video() {
@@ -30,7 +30,7 @@ class MediaModel {
         if (this._video === undefined) {
             return undefined
         }
-        return `/assets/images/photos/${this._photographer.firstName}/${this._video}`
+        return `assets/images/photos/${this._photographer.firstName}/${this._video}`
     }
 
     get likes() {

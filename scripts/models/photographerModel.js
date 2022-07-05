@@ -10,7 +10,7 @@ class PhotographerModel {
     }
 
     get portrait() {
-        return `/assets/photographers/${this._portrait}`
+        return `assets/photographers/${this._portrait}`
     }
 
     get name() {

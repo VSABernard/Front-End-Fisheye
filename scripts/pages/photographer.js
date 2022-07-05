@@ -152,7 +152,7 @@ class AppMedia {
         if (dataLike === currentLike)  {
             currentLike += 1 
             this.$sumLikes += 1                                  // Le nombre de total likes dans footer
-            event.target.classList.add('liked')                             // La couleur du coeur change après avoir été clicqué 1 fois               
+            event.target.classList.add('liked')                 // La couleur du coeur change après avoir été clicqué 1 fois               
 
         } else {
             currentLike -= 1    
