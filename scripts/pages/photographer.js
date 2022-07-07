@@ -125,8 +125,8 @@ class AppMedia {
 
                 this.$sumLikes += dataLike
 
-                buttonLike.addEventListener('click', (event) => { 
-                    this.updateLikeButton(event, mediaModel, dataLike)                    
+                buttonLike.addEventListener('click', () => { 
+                    this.updateLikeButton(mediaModel, dataLike)                    
                 })
 
                 // Evénément "LIKE" géré avec "ENTER"
@@ -135,7 +135,7 @@ class AppMedia {
                         return
                     }
                     if (event.key === 'Enter') {
-                        this.updateLikeButton(event, mediaModel, dataLike) 
+                        this.updateLikeButton(mediaModel, dataLike) 
                     }               
                     event.preventDefault()
                 }, true)
@@ -143,7 +143,7 @@ class AppMedia {
     }  
 
     // La méthode globale pour l'incrémentation et décrementation du bouton 'LIKE'
-    updateLikeButton (event, mediaModel, dataLike) {
+    updateLikeButton (mediaModel, dataLike) {
         
         let likeField = document.querySelector('#like-'+ mediaModel.id)                
         let currentLike = parseInt(likeField.innerHTML) 
@@ -152,12 +152,12 @@ class AppMedia {
         if (dataLike === currentLike)  {
             currentLike += 1 
             this.$sumLikes += 1                                  // Le nombre de total likes dans footer
-            event.target.classList.add('liked')                 // La couleur du coeur change après avoir été clicqué 1 fois               
+            // event.target.classList.add('liked')                 // La couleur du coeur change après avoir été clicqué 1 fois               
 
         } else {
             currentLike -= 1    
             this.$sumLikes -= 1                                 // Le nombre de total likes dans footer
-            event.target.classList.remove('liked')                // La couleur du coeur change après avoir été déclicqué 1 fois
+            // event.target.classList.remove('liked')                // La couleur du coeur change après avoir été déclicqué 1 fois
         } 
 
         likeField.innerHTML = '' + currentLike
