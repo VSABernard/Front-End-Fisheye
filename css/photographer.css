@@ -15,7 +15,6 @@ body {
     margin-right: 30px;
 }
 
-
 .photograph-header {
     position: relative;
     margin: auto;
@@ -361,7 +360,7 @@ footer p, footer span {
 }
 
 /* ---------------------------------------------------*/
-/* MODAL FORM */
+/* MODAL CONTACT FORM */
 /* ---------------------------------------------------*/
 
 .bground {
@@ -564,47 +563,45 @@ input[data-error]::after {
 .lightbox {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-content: center;
     position: fixed;
-    height: 100%;
-    width: 90%;
+    height: 90%;
+    width: 95%;
     min-width: 320px;
-    margin: 0;
-    padding-top: 30px;
+    margin: auto;
+    padding-top: 20px;
     top: 0;
     bottom: 0;
-    right: 0;
     left: 0;
+    right: 60px;
 } 
  
 .lightbox-content { 
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    flex: 6;
-    height: 100%;
-    width: 50%;
-    margin: auto;
+    height: 95%;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
     border:none;
+    left: 0;
 }
 
 .lightbox-media-image, .lightbox-media-video {
     display: flex;
     flex-direction: column;
-    position: relative;
     height: 100%;
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+    width: 900px;
+    margin: 0;
+    padding-bottom: 20px;
+    border-radius: 5px;
 }
 
 .lightbox-media-image img, .lightbox-media-video video {
-    height: 90%;
-    width: 90%;
+    min-height: 100%;
+    min-width: 90%;
     object-fit: cover;
-    object-position: 50% 25%;
+    object-position: 50% 32%;
+    border-radius: 5px;
 }
 
 figcaption {
@@ -620,9 +617,7 @@ figcaption {
 
 .close-iframe, .right-iframe, .left-iframe {
     display: flex;
-    flex: 1;
     color: rgb(152, 30, 30);
-    width: auto;
     height: 100px;
     background-color: transparent;
     border: none; 
@@ -633,29 +628,27 @@ figcaption {
     position: relative;
     font-size: 70px;
     font-weight: 600;
-    width: 30%;
-    right: 0;
-    left: 0;
+    width: 40px;
+    right: 20px;
+    left: 20px;
     margin-top: auto;
     margin-bottom: auto;
-    padding-left: 20px;
-}
-
-.right-iframe {
-    margin-right: -100px;
 }
 
 .left-iframe {
-    margin-left: 150px;
+    margin-left: 40px;
 }
 
+.right-iframe {
+    margin-right: 60px;
+}
 .close-iframe {
     position: relative;
     text-align: right;
     font-size: 50px;
     font-weight: 700;
     margin-top: -10px;
-    margin-left: -50px;
+    right: 80px;
     float: right;
 } 
 
@@ -673,6 +666,12 @@ figcaption {
     .media-photo, .media-video {
         width: 400px;
         height: 100%;
+    }
+    .right-iframe {
+        margin-right: 0;
+    }
+    .close-iframe {
+        right: 20px;
     }
 }
 
@@ -694,6 +693,12 @@ figcaption {
     }
     .media-photo, .media-video {
         width: 320px;
+    }
+    .lightbox-content{
+        width: fit-content;
+    }
+    .lightbox-media-image, .lightbox-media-video {
+        width: 700px;
     }
 } 
 
@@ -722,11 +727,10 @@ figcaption {
     .media-photo, .media-video {
         width: 350px;
     }
+    .left-iframe {
+        margin-left: 20px;
+    }
 }
-
-
-
-
 
 @media screen and (max-width: 900px)  {
     #title-modal, #photographer-name {
@@ -736,6 +740,17 @@ figcaption {
         font-size: 24px;
         top: 0;
         right: 0;
+    }
+    .lightbox-media-image, .lightbox-media-video {
+        width: 650px;
+        height: 80%;
+        margin-left: 40px;
+    }
+    .close-iframe, .right-iframe, .left-iframe {
+        font-size: 50px;
+    }
+    .left-iframe, .right-iframe {
+        margin-top: 450px;
     }
 }
 
@@ -757,6 +772,11 @@ figcaption {
     #title-modal {
         padding-top: 40px;
     }
+    .lightbox-media-image, .lightbox-media-video {
+        position: relative;
+        width: 500px;
+        margin-left: 20px;
+    }
 }
 
 @media screen and (max-width: 643px)  {
@@ -772,6 +792,16 @@ figcaption {
     #title-modal, #photographer-name {
         font-size: 30px;        
     }
+    .lightbox-media-image, .lightbox-media-video {
+        width: 360px;
+        height: 60%;
+    }
+    .close-iframe {
+        padding-right: 50px;
+    }
+    .left-iframe, .right-iframe {
+        margin-top: 300px;
+    }
 }
 
 @media screen and (max-width: 506px)  {
@@ -784,5 +814,15 @@ figcaption {
     .modal-button {
         bottom: 0;
         left: 40px;
+    }
+    .lightbox-media-image, .lightbox-media-video {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 400px)  {
+    .lightbox-media-image, .lightbox-media-video {
+        width: 220px;
+        height: 45%;
     }
 }
