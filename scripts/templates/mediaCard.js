@@ -3,7 +3,6 @@
 class MediasCard {
     constructor(currentMedia) {
         this._media = currentMedia 
-        // this.$filter = document.createElement('form')
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('medias-list')
     }
@@ -23,8 +22,8 @@ class MediasCard {
                     <article class="media-details">
                         <h5 tabindex="10" >${this._media.title}</h5>    
                         <input class="number-likes" aria-label="Number of likes">
-                            <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}" tabindex="11">${this._media.likes}</span>
-                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog" on>
+                            <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}" aria-label="${this._media.likes}" tabindex="11">${this._media.likes}</span>
+                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog" aria-label="Button like" aria-live="rude">
                                 <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
                             </button>
                         </input>

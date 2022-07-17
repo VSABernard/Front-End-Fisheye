@@ -1,5 +1,6 @@
 import { Api } from '../api/Api.js'
 
+// Classe de test qui permet de tester l'appel de l'API
 class TestApi {
     constructor() {
         this.api = new Api('./data/photographers.json') 

@@ -3,10 +3,6 @@ class LightboxModal {
         this._media = currentMedia
         this._allMedias = allMedias
         this._index = index
-        // console.log ('allMedias :')
-        // console.table (allMedias)
-        // console.log('current media : ' + currentMedia.title)
-        // console.log ('index :' + index)
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('background-lightbox')
         this.$modalWrapper = document.querySelector('.lightbox-modal')
@@ -14,8 +10,6 @@ class LightboxModal {
 
     // Créer une fênetre de lightbox 
     createLightbox() {
-
-        console.log('createLightBox media: ' + JSON.stringify(this._media))
         let lightboxMedia = `
             <section class="lightbox" role="dialog" aria-label="Image closeup view" aria-labelledby="dialog-lightbox"
                 aria-describedby="dialog-iframe" aria-modal="true" aria-hidden="true" tabindex="2">
@@ -102,20 +96,17 @@ class LightboxModal {
         const previousButton = this.$wrapper.querySelector('.left-iframe')
         
         previousButton
-            .addEventListener('click', () => {                             
-                console.log('Cliquez sur le bouton gauche :')
+            .addEventListener('click', () => {          
                 this.showPreviousMedia()
             })
     }    
 
     showPreviousMedia() {
-        console.log('showPreviousMedia')
         if(this._index === 0) {
             this._index = this._allMedias.length                    // Le défilement du tableau revient au dernière media
         }
         this._index -- 
         this._media = this._allMedias[this._index]
-        console.log('Title image precedente :' + this._media.title)
         // Remise à 0 la fênetre de la lightbox avant d'afficher le media précedent
         this.closeLightbox()
         this.render()
@@ -127,19 +118,16 @@ class LightboxModal {
 
         nextButton
             .addEventListener('click', () => {
-                console.log('Cliquez sur le bouton droit :')
                 this.showNextMedia()
             })
     }    
     
     showNextMedia() {
-        console.log('showNextMedia')
         if(this._index === (this._allMedias.length - 1)) {
             this._index = - 1                                       // Le défilement du tableau continue au première media
         }
         this._index ++
         this._media = this._allMedias[this._index]
-        console.log('Title image suivante :' + this._media.title)
         // Remise à 0 la fênetre de la lightbox avant d'afficher le media suivant
         this.closeLightbox()
         this.render()  
@@ -151,7 +139,6 @@ class LightboxModal {
             if(event.defaultPrevented) {
                 return
             }
-            console.log('onKeyDown : ' +event.key)
 
             switch (event.key) {
             case 'ArrowLeft' : this.showPreviousMedia()
@@ -162,7 +149,6 @@ class LightboxModal {
             event.preventDefault()
         }, true)
     }
-
     render() {
         this.createLightbox()
     }

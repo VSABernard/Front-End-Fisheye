@@ -12,9 +12,6 @@ class Api {
             .then(res => res.json())
             .then(res => res.photographers)
             .catch(err => console.log('an error occurs', err))
-        console.log ('photographers :' + photographers)
-        console.table (photographers)
-        // return ({photographers: [...photographers]})
         return photographers
     }
 
@@ -27,14 +24,9 @@ class Api {
         let photographers = await fetch(this._url)
             .then(res => res.json())
             .then(res => res.photographers)
-            .catch(err => console.log('an error occurs', err))        
-
-        console.log ('photographers :' + photographers)
-        console.table (photographers)
+            .catch(err => console.log('an error occurs', err))   
 
         let photographer = photographers.filter(photographer => photographer.id === id)
-        console.log('photographer id ' + id + ' : ')
-        console.log(photographer)
         return photographer
     }
     
@@ -47,8 +39,6 @@ class Api {
             .then(res => res.json())
             .then(res => res.media)
             .catch(err => console.log('an error occurs', err))
-        console.log ('media :' + medias)
-        console.table (medias)
         return ({media: [...medias]})
     }
 
@@ -62,13 +52,10 @@ class Api {
             .then(res => res.json())
             .then(res => res.media)
             .catch(err => console.log('an error occurs', err))
-        console.log ('medias :' + medias)
-        console.table (medias)
 
         const media = medias.filter(media => media.photographerId === idPhotographer)
         return media
     }
-
 }
 
 export { Api }
