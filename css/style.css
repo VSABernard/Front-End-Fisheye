@@ -34,15 +34,16 @@ header {
     align-items: center;
     height: 90px;
     width: 95%;
-    margin: 50px 0 50px 50px;
+    margin: 30px 0 70px 30px;
 }
 
 h1 {
     display: flex; 
     justify-content: flex-end;
     color: #d32222;
-    font-size: 34px;
-    font-weight: 500;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 47px;
     margin-right: -40px;
     min-width: 300px;
 }
@@ -68,8 +69,8 @@ h1 {
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 122px;
-    row-gap: 50px;
+    gap: 75px;
+    row-gap: 100px;
     margin: auto;
     padding-bottom: 50px;
     width: 100%;
@@ -81,7 +82,7 @@ h1 {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 285px;
+    width: 305px;
     margin: 0;
 }
 
@@ -99,16 +100,16 @@ h1 {
 
 .photographer-link h2 {
     color: #D3573C;
-    font-size: 30px;
-    font-weight: 500;    
+    font-size: 36px;
+    font-weight: 400;    
     margin-bottom: 0;
     text-align: center;    
 }
 
 .photographer-link img {
     display: block;
-    height: 230px;
-    width: 230px;
+    height: 180px;
+    width: 180px;
     border-radius: 220px;
     margin-left: auto;
     margin-right: auto;
@@ -125,22 +126,22 @@ h1 {
 
 .photographer-details h3 {
     color: #D3573C;
-    font-size: 16px;
-    font-weight: 300;    
+    font-size: 13px;
+    font-weight: 400;    
     margin: 5px;
 }
 
 .photographer-details h4 {
-    color: rgb(75, 66, 66);
-    font-size: 13px;
-    font-weight: 600;    
+    color: #000000;
+    font-size: 10px;
+    font-weight: 400;    
     margin: 5px;
 }
 
 .photographer-details h5 {
-    color: grey;
-    font-size: 13px; 
-    font-weight: 200; 
+    color: #757575;
+    font-size: 9px; 
+    font-weight: 400; 
     margin: auto;
 }
 
