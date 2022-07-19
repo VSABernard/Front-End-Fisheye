@@ -383,7 +383,7 @@ footer p, footer span {
 
 .bground {
     display: none;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
@@ -391,6 +391,8 @@ footer p, footer span {
     width: 100%;
     overflow: auto;
     background-color: rgba(237, 237, 243, 0.4);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
 } 
 
 .contact-modal {

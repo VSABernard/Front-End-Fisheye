@@ -14,9 +14,9 @@
   </head>
 
   <body id="body">
-    <header role="banner" tabindex="1">
+    <header role="banner">
       <a aria-label="FishEye logo" aria-current="page" href="index.html">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/> </a>
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" tabindex="1"/> </a>
     </header>
 
     <main id="main" role="main" aria-hidden="false">
@@ -37,36 +37,36 @@
     <!-- Formulaire de contact -->
     <section class="bground">
       <section class="contact-modal" role="dialog" aria-label="Contact-me" aria-labelledby="dialog-title" 
-        aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="-1">
+        aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="0">
         <div class="modal" aria-hidden="true" role="document">     
-          <h2 id="title-modal" aria-label="Contact-me button">Contactez-moi</h2> 
+          <h2 id="title-modal" aria-label="Contact-me button" tabindex="0">Contactez-moi</h2> 
           <h3 id="photographer-name"></h3>              
-          <button class="close-form" type="button" name="btn-close-modal" aria-label="Close the form" title="Fermer cette fenêtre modale" data-dismiss="dialog">
+          <button class="close-form" type="button" name="btn-close-modal" aria-label="Close the form" title="Fermer cette fenêtre modale" data-dismiss="dialog" tabindex="0">
               X
           </button>
                   
           <form name="reserve" id="form" method="post" action="photographer.html" aria-label="Champs du formulaire">  
             <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez indiquer votre prénom">
-              <label for="first" class="label-contact" aria-label="Votre prénom">Prénom</label>
-              <input class="text-control" type="text" id="first" name="first"/><br>                  
+              <label for="first" class="label-contact" aria-label="Votre prénom" tabindex="0">Prénom</label>
+              <input class="text-control" type="text" id="first" name="first" tabindex="0"/><br>                  
             </div>
       
             <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez indiquer votre nom">
-              <label for="last" class="label-contact" aria-label="Votre nom">Nom</label>
-              <input class="text-control" type="text" id="last" name="last"/><br>
+              <label for="last" class="label-contact" aria-label="Votre nom" tabindex="0">Nom</label>
+              <input class="text-control" type="text" id="last" name="last" tabindex="0"/><br>
             </div>
       
             <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Adresse mail invalide">
-              <label for="email" class="label-contact" aria-label="Votre email">E-mail</label>
-              <input class="text-control" type="email" id="email" name="email"/><br>
+              <label for="email" class="label-contact" aria-label="Votre email" tabindex="0">E-mail</label>
+              <input class="text-control" type="email" id="email" name="email" tabindex="0"/><br>
             </div>
 
             <div class="formData" data-error-visible="false" data-succes-visible="false" data-error="Veuillez laisser un message d'au moins 10 caractères">
-              <label for="msg" class="label-contact" aria-label="Votre message">Votre message</label>
-              <textarea class="text-message" aria-label="Détail de votre message" type="text" name="message" id="msg" cols="120"></textarea>
+              <label for="msg" class="label-contact" aria-label="Votre message" tabindex="0">Votre message</label>
+              <textarea class="text-message" aria-label="Détail de votre message" type="text" name="message" id="msg" cols="120" tabindex="0"></textarea>
             </div>
 
-            <input class="btn-submit button" type="submit" value="Envoyer" aria-label="Envoyer votre message" title="Envoyer votre message"/>
+            <input class="btn-submit button" type="submit" value="Envoyer" aria-label="Envoyer votre message" title="Envoyer votre message" tabindex="0"/>
           </form>       
         </div>
       </section>

@@ -203,7 +203,8 @@ class AppMedia {
         default: this.$mediasData.sort(comparatorLike)
             break
         }
-
+        console.log('media trie par :' + choice)
+        console.table(this.$mediasData)
         this.displayMedias(this.$mediasData)
     }
 

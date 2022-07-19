@@ -3,17 +3,21 @@ class LightboxModal {
         this._media = currentMedia
         this._allMedias = allMedias
         this._index = index
+        this.open = false
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('background-lightbox')
         this.$modalWrapper = document.querySelector('.lightbox-modal')
+        this.focusableElements = ['.lightbox', '#image-fullsize', '#video-fullsize', 'figcaption', '.left-iframe', '.right-iframe', '.close-iframe']
+        this.focusables = []
+        this.previousFocusElement = null
     }
 
     // Créer une fênetre de lightbox 
     createLightbox() {
         let lightboxMedia = `
             <section class="lightbox" role="dialog" aria-label="Image closeup view" aria-labelledby="dialog-lightbox"
-                aria-describedby="dialog-iframe" aria-modal="true" aria-hidden="true" tabindex="2">
-                <button class="left-iframe" type="button" name="btn-left-iframe" aria-label="Défiler media vers gauche" title="Défiler media vers gauche" data-dismiss="dialog">
+                aria-describedby="dialog-iframe" aria-modal="true" aria-hidden="true" tabindex="0">
+                <button class="left-iframe" type="button" name="btn-left-iframe" aria-label="Previous image" title="Défiler media vers gauche" data-dismiss="dialog" tabindex="0">
                      <
                 </button>
                 <section class="lightbox-content">`
@@ -21,34 +25,36 @@ class LightboxModal {
         if (this._media.image != undefined) {
             lightboxMedia += `
                     <figure class="lightbox-media-image" aria-modal="true" aria-hidden="true">
-                        <img src='${this._media.image}'
+                        <img id="image-fullsize" src='${this._media.image}'
                         overflow-y: "auto"
                         overflow-x: "auto"
                         height= "95%"
                         width= "100%"
-                        alt= '${this._media.title}'>
-                        <figcaption>${this._media.title}</figcaption>
+                        alt= '${this._media.title}'
+                        tabindex="0">
+                        <figcaption tabindex="0">${this._media.title}</figcaption>
                     </figure>`}
         else {
             lightboxMedia += `
                     <figure class="lightbox-media-video" aria-modal="true" aria-hidden="true">
-                        <video controls class="media-video" aria-modal="true" aria-hidden="true">
+                        <video controls id="video-fullsize" class="media-video" aria-modal="true" aria-hidden="true">
                             <source src='${this._media.video}'
                             type="video/mp4"
                             overflow-y: "auto"
                             overflow-x: "auto"
                             height= "95%"
                             width= "100%"
-                            alt= '${this._media.title}'></video>
-                        <figcaption>${this._media.title}</figcaption>
+                            alt= '${this._media.title}'
+                            tabindex="0"></video>
+                        <figcaption tabindex="0">${this._media.title}</figcaption>
                     </figure>`}
 
         lightboxMedia += `
                 </section>
-                <button class="right-iframe" type="button" name="btn-right-iframe" aria-label="Défiler media vers droit" title="Défiler media vers droit" data-dismiss="dialog">
+                <button class="right-iframe" type="button" name="btn-right-iframe" aria-label="Next image" title="Défiler media vers droit" data-dismiss="dialog" tabindex="0">
                     >
                 </button>
-                <button class="close-iframe" type="button" name="btn-close-iframe" aria-label="Fermer le lightbox" title="Fermer cette fenêtre lightbox" data-dismiss="dialog">
+                <button class="close-iframe" type="button" name="btn-close-iframe" aria-label="Close dialog" title="Fermer cette fenêtre lightbox" data-dismiss="dialog" tabindex="0">
                     X
                 </button>
             </section>  `
@@ -59,9 +65,22 @@ class LightboxModal {
         this.onCloseLightbox()
         this.onCloseEscape()
         this.onPreviousMedia()
-        this.onNextMedia()
-        this.onKeydown()
-        this.$modalWrapper.focus()
+        this.onNextMedia()   
+        this.focusables = this.getFocusableElements()
+        console.table(this.focusables)
+        this.$modalWrapper.focus()  
+        this.onKeydown()   
+    }
+
+    // Obtenir la liste des éléments qui ont focus
+    getFocusableElements(){
+        let arrayFocusables = []
+        for(let i = 0; i < this.focusableElements.length; i++){
+            if(this.$modalWrapper.querySelector(this.focusableElements[i]) != null){
+                arrayFocusables.push(this.$modalWrapper.querySelector(this.focusableElements[i]))
+            }
+        }
+        return arrayFocusables
     }
 
     // Préparer les événements pour FERMER le lightbox
@@ -89,6 +108,7 @@ class LightboxModal {
         this.$modalWrapper.classList.remove('modal-on')
         this.$wrapper.classList.remove('background-lightbox')
         this.$wrapper.innerHTML = ''
+        this.open = false
     }
 
     // Faire défiler le contenu du lightbox vers gauche
@@ -141,16 +161,44 @@ class LightboxModal {
             }
 
             switch (event.key) {
-            case 'ArrowLeft' : this.showPreviousMedia()
+            case 'ArrowLeft' : this.showPreviousMedia() 
+                event.preventDefault()
                 break
             case 'ArrowRight' : this.showNextMedia()
+                event.preventDefault()
+                break
+            case 'Tab' : this.focusInLightbox(event)
                 break
             }
-            event.preventDefault()
         }, true)
     }
+
+    // Gerer le tabindex
+    focusInLightbox(event) {
+        event.preventDefault()
+        console.log('before document.activeElement : ' + this.focusElement)
+        
+        console.log ('focusElement :' + this.focusElement)
+
+        let index =  this.focusables.findIndex( f => f === this.focusElement)
+        
+        console.log('index :' + index)
+        index ++
+        if (index >= this.focusables.length) {
+            index = 0
+        }
+        console.log('this.focusables[index] : ' + this.focusables[index])
+        this.focusables[index].focus()
+        this.focusElement = this.focusables[index]
+        this.previousFocusElement = this.focusables[index]
+        console.log('after document.activeElement : ' + this.focusElement)
+    }
+
     render() {
         this.createLightbox()
+        if(this.previousFocusElement != null){
+            this.previousFocusElement.focus()
+        }
     }
 }
 
