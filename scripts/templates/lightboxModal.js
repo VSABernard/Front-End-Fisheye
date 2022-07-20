@@ -7,7 +7,7 @@ class LightboxModal {
         this.$wrapper = document.createElement('section')
         this.$wrapper.classList.add('background-lightbox')
         this.$modalWrapper = document.querySelector('.lightbox-modal')
-        this.focusableElements = ['.lightbox', '#image-fullsize', '#video-fullsize', 'figcaption', '.left-iframe', '.right-iframe', '.close-iframe']
+        this.focusableElements = ['#image-fullsize', '#video-fullsize', '.left-iframe', '.right-iframe', '.close-iframe']
         this.focusables = []
         this.previousFocusElement = null
     }

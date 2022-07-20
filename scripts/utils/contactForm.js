@@ -8,11 +8,8 @@ const bground = document.querySelector('.bground')
 const modal = document.querySelector('.contact-modal')
 const form = document.querySelector('form')
 const modalCloseBtn = document.querySelector('.close-form')
-const focusableSelector ='.contact-modal, #title-modal, .label-contact, .text-control, .text-message, #submit-contact, .close-form'
-
-
+const focusableSelector ='.text-control, .text-message, #submit-contact, .close-form'
 let focusables = []
-// let previouslyFocusedElement = null
 
 // Functions
 const onOpenModal = () => {
@@ -21,11 +18,7 @@ const onOpenModal = () => {
     body.classList.add('no-scroll')
     bground.style.display = 'block'
     modal.style.display = 'flex'
-    // modalCloseBtn.focus()
-
     focusables = Array.from(bground.querySelectorAll(focusableSelector))
-    // previouslyFocusedElement = document.querySelector(':focus')
-    // focusables[0].focus()
     modal.focus()
 }
  
@@ -55,9 +48,6 @@ modal.addEventListener('keydown', function (event) {
     }
 })
 
-
-
-
 const focusInModal = function (event) {
     event.preventDefault()
     let index = focusables.findIndex(f => f === bground.querySelector(':focus'))
@@ -74,10 +64,6 @@ const focusInModal = function (event) {
     }
     focusables[index].focus()
 }
-
-
-
-
 
 // ======================================================================================================
 // La VALIDATION des champs de la modale
@@ -245,5 +231,3 @@ function checkMsg () {
     }
     return true
 }
-
-

@@ -60,7 +60,6 @@ class AppMedia {
                     template.createContactPage()
                 )
             })
-
         this.$photographerName.innerHTML = this.$photographer.name       
     }   
 
@@ -85,17 +84,6 @@ class AppMedia {
                     lightboxMedia.render()
                 }) 
 
-                // Ouverture la lightbox avec "Enter" après avoir navigué avec "Tab"
-                media.addEventListener('keydown',event => {
-                    if(event.defaultPrevented) {
-                        return
-                    }
-                    if (event.key === 'Enter') {
-                        const lightboxMedia = new LightboxModal(template._media, mediasModel, index)
-                        lightboxMedia.render()
-                    }
-                }, true)  
-                
                 // L'incrémentation et décrementation du bouton 'LIKE'
                 // dataLike : le nombre de likes dans le JSon
                 // currentLike : le nombre de like qui augmente ou descend après chaque "click"
@@ -109,17 +97,6 @@ class AppMedia {
                 buttonLike.addEventListener('click', () => { 
                     this.updateLikeButton(mediaModel, dataLike)                    
                 })
-
-                // Evénément "LIKE" géré avec "ENTER"
-                buttonLike.addEventListener('keydown', (event) => {
-                    if(event.defaultPrevented) {
-                        return
-                    }
-                    if (event.key === 'Enter') {
-                        this.updateLikeButton(mediaModel, dataLike) 
-                        event.preventDefault()
-                    } 
-                }, true)
             })
     }  
 
