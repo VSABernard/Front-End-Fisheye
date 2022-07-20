@@ -707,6 +707,9 @@ figcaption {
         width: 400px;
         height: 100%;
     }
+    .media-details {
+        margin-left: -20px;
+    }
     .right-iframe {
         margin-right: 0;
     }
@@ -719,8 +722,8 @@ figcaption {
     .media-photo, .media-video {
         width: 360px;
     }
-    .media-video {
-        margin: 0;
+    .media-details {
+        margin-left: 0;
     }
     h5, h6 {
         font-size: 20px;
@@ -734,6 +737,9 @@ figcaption {
     .media-photo, .media-video {
         width: 320px;
     }
+    h5 {
+        margin-left: 20px;
+    }
     .lightbox-content{
         width: fit-content;
     }
@@ -741,6 +747,16 @@ figcaption {
         width: 700px;
     }
 } 
+
+@media screen and (max-width: 1220px) {
+    .medias-photographer {
+        width: 350px;
+        gap: 0;
+    }
+    .media-details {
+        margin-left: -20px;
+    }
+}
 
 @media screen and (max-width: 1115px) {   
     .medias-content {
@@ -766,6 +782,9 @@ figcaption {
     }
     .media-photo, .media-video {
         width: 350px;
+    }
+    .media-details{
+        margin-left: -40px;
     }
     .left-iframe {
         margin-left: 20px;
@@ -808,7 +827,7 @@ figcaption {
         font-size: 54px;
     }
     .modal-button {
-        top: 50%;
+        top: 60%;
         left: 4%;
     }
     .head-title {
@@ -835,7 +854,7 @@ figcaption {
         font-size: 48px;
     }
     .modal-button {
-        top: 60%;
+        top: 50%;
     }
     .lightbox-media-image, .lightbox-media-video {
         width: 360px;
@@ -889,7 +908,7 @@ figcaption {
     }
     .modal-button {
         bottom: 0;
-        left: 40px;
+        left: 25px;
     }
     .lightbox-media-image, .lightbox-media-video {
         width: 250px;
@@ -905,6 +924,16 @@ figcaption {
     }
     #title-modal, #photographer-name {
         font-size: 38px;
+    }
+}
+
+@media screen and (max-width: 415px)  {
+    h4 {
+        width: 220px;
+    }
+    .modal-button {
+        left: 0;
+        height: 60px;
     }
 }
 
