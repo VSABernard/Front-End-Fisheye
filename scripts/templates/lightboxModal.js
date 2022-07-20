@@ -67,7 +67,7 @@ class LightboxModal {
         this.onPreviousMedia()
         this.onNextMedia()   
         this.focusables = this.getFocusableElements()
-        console.table(this.focusables)
+        // console.table(this.focusables)
         this.$modalWrapper.focus()  
         this.onKeydown()   
     }

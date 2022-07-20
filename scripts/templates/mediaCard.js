@@ -11,6 +11,7 @@ class MediasCard {
         return this._media
     }
     
+    // La galerie des médias
     createMediaPage() {
         let mediaCard = `         
          <section class="medias-photographer" role="dialog" aria-labelledby="dialog-image" 
@@ -18,26 +19,26 @@ class MediasCard {
             `
         if (this._media.image != undefined) {
             mediaCard += `
-                    <img class="media-photo" id="${this._media.id}"  aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}" tabindex="9">  
+                    <img class="media-photo" id="${this._media.id}"  aria-modal="true" aria-hidden="true" src='${this._media.image}' alt="${this._media.title}" tabindex="6">  
                     <article class="media-details">
-                        <h5 tabindex="9" >${this._media.title}</h5>    
+                        <h5 tabindex="6" >${this._media.title}</h5>    
                         <input class="number-likes" aria-label="Number of likes">
-                            <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}" aria-label="${this._media.likes} likes" tabindex="9 ">${this._media.likes}</span>
-                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog" aria-label="Button like" aria-live="rude">
+                            <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}" aria-label="${this._media.likes} likes">${this._media.likes}</span>
+                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog" aria-label="Button like" aria-live="rude" tabindex="6">
                                 <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
                             </button>
                         </input>
                     </article> `  }
         else {
             mediaCard += `
-                    <video class="media-video" id="${this._media.id}" aria-modal="true" aria-hidden="true" tabindex="9">
+                    <video class="media-video" id="${this._media.id}" aria-modal="true" aria-hidden="true" tabindex="6">
                         <source src='${this._media.video}' type="video/mp4" alt="${this._media.title}">
                     </video>   
                     <article class="media-details">
-                        <h5 tabindex="9">${this._media.title}</h5>   
+                        <h5 tabindex="6">${this._media.title}</h5>   
                         <input class="number-likes" aria-label="Number of likes">
-                            <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}likes" tabindex="9">${this._media.likes}</span>
-                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog">
+                            <span class="like-counter" id="like-${this._media.id}" type="text" value="${this._media.likes}likes">${this._media.likes}</span>
+                            <button class="button-heart" id="heart-${this._media.id}" type="button" aria-haspopup="dialog" aria-controls="dialog" tabindex="6">
                                 <i class="fa-solid fa-heart" id="button-likes" aria-label="Button like"></i>
                             </button>
                         </input>
@@ -50,13 +51,13 @@ class MediasCard {
     }  
 }
 
+// Le système de tri des medias
 class FilterCard {
     constructor() {
         this.$filter = document.createElement('form')
     }
 
     createFilterCard() {
-        
         this.$filter.classList.add('filter-block')
         this.$filter.setAttribute('aria-labelledby', 'media-container')
         this.$filter.setAttribute('aria-haspopup', 'listbox')
@@ -66,8 +67,8 @@ class FilterCard {
 
         const filterBlock = `
             <form class="filters">
-                <label for="filter-select" class="label" tabindex="7">Trier par</label>
-                <select id="form-select" name="choices" aria-label="Order by" tabindex="8">
+                <label for="filter-select" class="label" tabindex="5">Trier par</label>
+                <select id="form-select" name="choices" aria-label="Order by" tabindex="5">
                     <option class="filter-options" id="selected" value="popularity">Popularité</option> 
                     <option disabled="disabled">──────────────</option>
                     <option class="filter-options" id="option-1" value="date">Date</option>   
@@ -83,6 +84,7 @@ class FilterCard {
     }
 }
 
+// la bannière footer où est affiché le nombre total de likes et le prix journalier du photographe
 class FooterCard {
     constructor(currentMedia) {
         this._user = currentMedia  
@@ -93,7 +95,7 @@ class FooterCard {
         $wrapper.classList.add('banner-footer')
 
         const footer = `
-        <footer class="footer" aria-label="Banner of likes and daily rate" tabindex="6">
+        <footer class="footer" aria-label="Banner of likes and daily rate" tabindex="4">
             <section class="likes" aria-label="Total number of likes">
                 <span id="total-likes" aria-label="Number of ${this._media.likes} likes">${this._media.likes}</span>
                 <i class="fa-solid fa-heart" id="footer-likes" aria-label="Button like"></i>

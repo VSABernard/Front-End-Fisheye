@@ -293,7 +293,6 @@ h5 {
     display: flex;
     flex: 1;
     margin-top: 0;
-    padding-left: 5px;
     font-weight: 400;
     font-size: 24px;
     line-height: 31px;
@@ -397,24 +396,16 @@ footer p, footer span {
 
 .contact-modal {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
     position: relative;
-    align-content: center;
     margin: auto;
     z-index: 1;
-    top: 80px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: auto;
-    max-width: 813px;
+    width: 813px;
     height: 937px;
-    max-height: 1200px;
-    min-width: 320px;
-    padding: 50px auto;
+    top: 56px;
     border-radius: 5px;
-    border: 2px solid #95FFF9;
+    /* border: 2px solid #95FFF9;  */
     background-color: rgba(237, 237, 243, 0.4);
     overflow: hidden;
     transition: .2s;
@@ -425,25 +416,32 @@ footer p, footer span {
     opacity: 0.5;
     width: 813px;
     height: 937px;
+    margin: auto;
     top: 56px;
-    left: 277px;
-    border: 2px solid #95FFF9;
+    /* border: 2px solid #95FFF9; */
 }
 
 .modal {
+    position: absolute;
     flex: 1;
-    max-width: 669px;
-    width: auto;
+    width: 669px;
     height: 900px;
     margin: auto;
-    padding: 40px 20px 20px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-radius: 5px;
     scroll-behavior: unset;
     background-color: #DB8876;
 }
 
+.head-title {
+    margin-top: 30px;
+}
+
 #title-modal, #photographer-name {
-    width: 100%;
+    width: 80%;
     font-size: 64px;
     font-weight: 400;
     height: 83px;
@@ -456,7 +454,9 @@ footer p, footer span {
 }
 
 .close-form {
-    position: relative;
+    display: flex;
+    position: absolute;
+    align-self: flex-end;
     color: white;
     font-size: 42px;
     font-weight: 500;
@@ -464,18 +464,20 @@ footer p, footer span {
     height: 50px;
     background-color: #DB8876;
     border: #DB8876;    
-    top: -150px;
+    top: 10px;
+    bottom: 0;
     left: 600px;
+    right: 0;
     padding-top: 10px;
     cursor: pointer;
 }
 
 form {
     display: flex;
-    min-width: 100%;
+    width: 90%;
     flex-direction: column;
     align-content: center;
-    margin-top: 0px;
+    margin: auto;
 }
 
 .label-contact {
@@ -497,7 +499,7 @@ form {
 }
 
 form input {
-    width: auto;
+    width: 599px;
     max-height: 100%;
     min-height: 40px;
     border: none;
@@ -507,7 +509,7 @@ form input {
 textarea.text-message {
     margin-bottom: 20px;
     resize : both;
-    width : auto;
+    width : 100%;
     min-height : 170px;
     border-radius: 8px;
     font-size: 18px;
@@ -603,44 +605,42 @@ input[data-error]::after {
     min-width: 320px;
     margin: auto;
     left: 100px;
-    top: 20px;
+    top: 50px;
     bottom: 20px;
     right: 60px;
-    border: 2px solid #95FFF9;
+    /* border: 2px solid #95FFF9; */
 } 
  
 .lightbox-content { 
     display: flex;
+    position: relative;
     height: 900px;
     width: 1050px;
     max-width: 900px;
     margin:auto;
+    left: 20px;
     border:none;
 }
 
 .lightbox-media-image, .lightbox-media-video {
     display: flex;
     flex-direction: column;
-    height: 900px;
-    width: 1050px;
+    position: relative;
+    height: 95%;
+    width: 100%;
     bottom: 50px;
-    margin-top: -30px;
-    margin-left: -30px;
+    top: -10px;
     padding-bottom: 50px;
     border-radius: 5px;
 }
 
 .lightbox-media-image img, .lightbox-media-video video {
     position: relative;
-    min-height: 100%;
-    min-width: 90%;
-    height: 900px;
-    width: 1000px;
+    height: 95%;
+    width: 100%;
     object-fit: cover;
     object-position: 50% 50%;
     border-radius: 5px;
-    margin: 0;
-    top: 0;
 }
 
 figcaption {
@@ -648,7 +648,6 @@ figcaption {
     color: rgb(152, 30, 30);
     font-size: 20px;
     font-weight: 700;
-    margin: 0;
     padding-top: 10px;
     height: 50px;
     width: 100%;
@@ -687,10 +686,11 @@ figcaption {
     text-align: right;
     font-size: 42px;
     font-weight: 700;
-    margin-top: 10px;
+    margin-top: 40px;
     right: 80px;
     float: right;
 } 
+
 
 
 /* ---------------------------------------------------*/
@@ -790,8 +790,11 @@ figcaption {
     .modal {
         width: 500px;
     }
+    #title-modal, #photographer-name {
+        font-size: 54px;
+    }
     .close-form {
-        top: -170px;
+        top: 0;
         left: 450px;
     }
 }
@@ -808,20 +811,19 @@ figcaption {
         top: 50%;
         left: 4%;
     }
-    #title-modal {
-        padding-top: 40px;
+    .head-title {
+        width: 100%;
+    }
+    #title-modal, #photographer-name {
+        font-size: 54px;
+    }
+    .close-form {
+        left: 450px;
     }
     .lightbox-media-image, .lightbox-media-video {
         position: relative;
         width: 500px;
         margin-left: 20px;
-    }
-    #form {
-        margin-top: -60px;
-    }
-    .close-form {
-        top: -220px;
-        left: 450px;
     }
 }
 
@@ -852,11 +854,29 @@ figcaption {
         width: 400px;
     }
     .close-form {
-        top: -220px;
         left: 350px;
     }
+    .head-title {
+        margin-left: 15px;
+    }
     #title-modal, #photographer-name {
-        font-size: 56px;
+        font-size: 45px;
+    }
+    #title-modal {
+        margin-top: 20px;
+        margin-bottom: -20px;
+    }
+    .label-contact {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    #title-modal, #photographer-name {
+        margin-left: -60px;
+    }
+    #title-modal {
+        margin-bottom: 10px;
     }
 }
 
@@ -881,11 +901,10 @@ figcaption {
         width: 350px;
     }
     .close-form {
-        top: -220px;
         left: 300px;
     }
     #title-modal, #photographer-name {
-        font-size: 48px;
+        font-size: 38px;
     }
 }
 
@@ -901,13 +920,12 @@ figcaption {
         width: 230px;
     }
     .close-form {
-        top: -220px;
-        left: 200px;
+        left: 180px;
     }
     #title-modal, #photographer-name {
-        font-size: 42px;
+        font-size: 32px;
     }
     .label-contact {
-        font-size: 30px;
+        font-size: 26px;
     }
 }

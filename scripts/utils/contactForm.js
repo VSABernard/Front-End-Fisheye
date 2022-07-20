@@ -8,7 +8,12 @@ const bground = document.querySelector('.bground')
 const modal = document.querySelector('.contact-modal')
 const form = document.querySelector('form')
 const modalCloseBtn = document.querySelector('.close-form')
- 
+const focusableSelector ='.contact-modal, #title-modal, .label-contact, .text-control, .text-message, #submit-contact, .close-form'
+
+
+let focusables = []
+// let previouslyFocusedElement = null
+
 // Functions
 const onOpenModal = () => {
     main.setAttribute('aria-hidden', 'true')
@@ -16,7 +21,12 @@ const onOpenModal = () => {
     body.classList.add('no-scroll')
     bground.style.display = 'block'
     modal.style.display = 'flex'
-    modalCloseBtn.focus()
+    // modalCloseBtn.focus()
+
+    focusables = Array.from(bground.querySelectorAll(focusableSelector))
+    // previouslyFocusedElement = document.querySelector(':focus')
+    // focusables[0].focus()
+    modal.focus()
 }
  
 const onCloseModal = () => {
@@ -35,13 +45,39 @@ openModalBtn.addEventListener('click', onOpenModal)
 modalCloseBtn.addEventListener('click', onCloseModal)
  
 // Fermer la modale avec la touche "Esc"
-modal.addEventListener('keydown', logKey)
-
-function logKey(event) {
-    if ('Escape' === event.code) {
-        onCloseModal()        
+// Navigation avec la touche "Tab"
+modal.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' || event.key === 'Esc') {
+        onCloseModal(event)
     }
+    if (event.key === 'Tab' && modal !== null) {
+        focusInModal(event)
+    }
+})
+
+
+
+
+const focusInModal = function (event) {
+    event.preventDefault()
+    let index = focusables.findIndex(f => f === bground.querySelector(':focus'))
+    if (event.shiftKey === true) {
+        index--
+    } else {
+        index++
+    }
+    if (index >= focusables.length) {
+        index = 0
+    }
+    if (index < 0) {
+        index = focusables.length - 1
+    }
+    focusables[index].focus()
 }
+
+
+
+
 
 // ======================================================================================================
 // La VALIDATION des champs de la modale

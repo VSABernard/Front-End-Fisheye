@@ -94,8 +94,7 @@ class AppMedia {
                         const lightboxMedia = new LightboxModal(template._media, mediasModel, index)
                         lightboxMedia.render()
                     }
-                }, true)
-                                
+                }, true)  
                 
                 // L'incrémentation et décrementation du bouton 'LIKE'
                 // dataLike : le nombre de likes dans le JSon
@@ -118,8 +117,8 @@ class AppMedia {
                     }
                     if (event.key === 'Enter') {
                         this.updateLikeButton(mediaModel, dataLike) 
-                    }               
-                    event.preventDefault()
+                        event.preventDefault()
+                    } 
                 }, true)
             })
     }  

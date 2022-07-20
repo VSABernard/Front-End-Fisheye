@@ -15,7 +15,7 @@ class UserCard {
                 <img class='photographer-id' alt="${this._user.name}" aria-label="${this._user.name}" src='${this._user.portrait}'>
                 <h2>${this._user.name}</h2>
             </a>
-            <div class="photographer-details" tabindex="4">
+            <div class="photographer-details" tabindex="3">
                 <h3>${this._user.city}, ${this._user.country}</h3>
                 <h4>${this._user.tagline}</h4>
                 <h5>${this._user.price}</h5>
